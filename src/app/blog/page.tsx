@@ -1,0 +1,277 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Newsletter from '@/components/Newsletter';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Navigation,
+  Sparkles,
+  ArrowRight,
+  Globe,
+  Users,
+  Building2,
+  PhoneCall,
+  Languages,
+  BookOpenCheck,
+  TrendingUp,
+  Cpu,
+  Layers
+} from 'lucide-react';
+
+export default function Center() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const Center = [
+    {
+      name: "CORPORATE HEAD OFFICE",
+      location: "15/382, Calicut Tower, Kozhikode Road, Wayanad, Kerala, India",
+      phone: "+91 924130060",
+      email: "edbelledu@gmail.com",
+      image: "/zakaria-cm.jpg",
+      manager: {
+        name: "Zakaria CM",
+        position: "Manager"
+      }
+    },
+    {
+      name: "CALICUT REGIONAL HUB",
+      location: "Building 4, Cyberpark Road, Nellikode, Kozhikode, Kerala",
+      phone: "+91 924130060",
+      email: "edbelledu@gmail.com",
+      image: "/rashid-director.jpg",
+      manager: {
+        name: "Rashid",
+        position: "Regional Director"
+      }
+    },
+    {
+      name: "KOCHI ACADEMIC CENTRE",
+      location: "MG Road, Ravipuram, Kochi, Kerala",
+      phone: "+91 924130060",
+      email: "edbelledu@gmail.com",
+      image: "/kochi-director.jpg",
+      manager: {
+        name: "Abdu Raheem",
+        position: "Director"
+      }
+    }
+  ];
+
+  const auxiliaryServices = [
+    {
+      title: "MOBILE PHONE TECHNICIAN",
+      icon: <PhoneCall className="h-6 w-6" />,
+      desc: "EdBell's high-performance technical support facility, providing expert hardware maintenance and digital provisioning to ensure the continuous operational integrity of the student ecosystem.",
+      href: "/mobiles"
+    },
+    {
+      title: "SPOKEN ENGLISH COURSES",
+      icon: <Languages className="h-6 w-6" />,
+      desc: "Advanced fluency protocols to enhance global communication competence and professional presentation.",
+      href: "/english"
+    },
+    {
+      title: "PREMIUM TUITION NODES",
+      icon: <BookOpenCheck className="h-6 w-6" />,
+      desc: "Subject-specific acceleration programs focusing on core academic performance across all boards.",
+      href: "/tuition"
+    }
+  ];
+
+  const growthArchitecture = [
+    { 
+      label: "EC HUB", 
+      desc: "The foundation of our educational vision was laid with the launch of EC Hub, centering academic support.",
+      metric: "Phase_01",
+      icon: <Building2 className="h-5 w-5" />
+    },
+    { 
+      label: "Edbelledu Solutions", 
+      desc: "Official launch of EdBell in Kerala. Core mission parameters established for high-performance learning.",
+      metric: "Phase_02",
+      icon: <Sparkles className="h-5 w-5" />
+    },
+    { 
+      label: "ECOSYSTEM_v1", 
+      desc: "Edbell Digital Portal deployed for global operations and student synchronization.",
+      metric: "Phase_03",
+      icon: <Cpu className="h-5 w-5" />
+    },
+    { 
+      label: "GLOBAL_EXPANSION", 
+      desc: "Scaling across every domestic and international educational zone.",
+      metric: "Phase_04",
+      icon: <Globe className="h-5 w-5" />
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[var(--bg-primary)] selection:bg-blue-500/30 overflow-hidden">
+      {/* Hero Section - About style */}
+      <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center pt-16 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1524178232457-3bb2449b382a?auto=format&fit=crop&q=80"
+            alt="Center Backdrop"
+            className="w-full h-full object-cover opacity-20 filter contrast-125 brightness-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-[var(--bg-primary)]/50 to-[var(--bg-primary)]"></div>
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto w-full text-center space-y-8">
+          <div className={`space-y-6 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            <div className="inline-flex items-center space-x-3 bg-[var(--surface)]/40 border border-[var(--border)] rounded-full px-4 py-1.5 backdrop-blur-3xl mx-auto">
+              <Building2 className="h-4 w-4 sm:h-5 sm:w-5 text-[var(--primary)]" />
+              <span className="text-[8px] sm:text-[9px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">Our Physical Locations</span>
+            </div>
+
+            <div className="space-y-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-[var(--text-heading)] leading-[0.85] tracking-tighter uppercase font-serif">
+                Edbell <br />
+                <span className="text-transparent bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--highlight)] bg-clip-text">
+                  Study Centers
+                </span>
+              </h1>
+              <p className="text-sm sm:text-base lg:text-lg text-[var(--text-primary)] font-light max-w-2xl mx-auto leading-relaxed">
+                EdBell Study Centers serve as the physical backbone of our educational ecosystem. Our strategically located centers across Kerala provide students with dedicated learning spaces, high-speed access, and personalized academic support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Corporate Nodes - The 3 Photos Section */}
+      <section className="py-20 lg:py-28 bg-[var(--bg-secondary)] relative border-y border-[var(--border)]">
+        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 space-y-16">
+          <div className="flex flex-col lg:flex-row items-end justify-between gap-6">
+            <div className="space-y-2">
+              <p className="text-[9px] sm:text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.3em]">Institutional_Council</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-[var(--text-heading)] uppercase tracking-tighter">Our Leadership Team</h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            {Center.map((centre, i) => (
+              <div key={i} className="group relative flex flex-col space-y-6">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-[var(--border)] shadow-2xl">
+                  <div className="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-colors z-10"></div>
+                  <img
+                    src={centre.image}
+                    alt={centre.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                  />
+                </div>
+                
+                <div className="space-y-4 px-2 text-center">
+                  {centre.manager && (
+                    <div className="space-y-3">
+                       <h3 className="text-2xl lg:text-3xl xl:text-4xl font-black text-[var(--text-heading)] uppercase tracking-tighter italic font-serif">
+                         {centre.manager.name}
+                       </h3>
+                       <div className="inline-flex items-center space-x-2 bg-[var(--primary)]/10 border border-[var(--primary)]/20 rounded-full px-4 py-1.5 backdrop-blur-3xl">
+                         <span className="text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.3em]">{centre.manager.position}</span>
+                       </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Growth Architecture section */}
+      <section className="py-20 lg:py-28 bg-[var(--bg-primary)] overflow-hidden">
+        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 space-y-16">
+          <div className="text-center space-y-4">
+            <div className="inline-flex items-center space-x-3 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 backdrop-blur-3xl mx-auto">
+                <TrendingUp className="h-4 w-4 text-[var(--primary)]" />
+                <span className="text-[9px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">Chronological_Roadmap</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--text-heading)] uppercase tracking-tighter leading-none">Growth Architecture</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+            {/* Background Line */}
+            <div className="absolute top-1/2 left-0 right-0 h-px bg-white/5 hidden lg:block -translate-y-1/2"></div>
+            
+            {growthArchitecture.map((phase, i) => (
+              <div 
+                key={i} 
+                className={`group relative p-8 bg-[var(--surface)]/40 border border-[var(--border)] rounded-[40px] hover:bg-[var(--surface-alt)]/60 transition-all duration-700 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}
+                style={{ animationDelay: `${i * 150}ms` }}
+              >
+                <div className="relative z-10 space-y-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[9px] font-black text-[var(--primary)] uppercase tracking-widest">{phase.metric}</span>
+                    <div className="w-10 h-10 bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl flex items-center justify-center text-[var(--primary)] group-hover:scale-110 transition-transform">
+                      {phase.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-black text-[var(--text-heading)] uppercase tracking-tight">{phase.label}</h3>
+                  <p className="text-sm text-[var(--text-primary)] font-light leading-relaxed">{phase.desc}</p>
+                </div>
+                
+                {/* Connector Nodes */}
+                <div className="absolute top-1/2 -right-3 w-6 h-6 rounded-full bg-[var(--bg-primary)] border-4 border-white/5 hidden lg:block -translate-y-1/2 z-20 group-last:hidden"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Support Sub-Systems - Mobile, English, Tuition */}
+      <section className="py-20 lg:py-28 bg-[var(--bg-primary)]">
+        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="lg:col-span-5 space-y-10">
+              <div className="space-y-4">
+                <span className="text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">Service_Extensions</span>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--text-heading)] uppercase tracking-tighter leading-[0.9]">Additional <br /> Learning Hubs</h2>
+                <p className="text-base text-[var(--text-secondary)] font-light leading-relaxed max-w-md pt-4">
+                  We provide specialized support modules beyond university curriculums, including technical training and language proficiency, ensuring the holistic development of every student.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contact" className="px-10 py-4 bg-[var(--primary)] rounded-full text-white font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-blue-500/20">
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              {auxiliaryServices.map((service, i) => (
+                <Link 
+                  key={i} 
+                  href={service.href}
+                  className={`p-8 lg:p-10 bg-[var(--surface)]/40 border border-[var(--border)] rounded-[40px] hover:bg-[var(--surface-alt)]/60 transition-all group block ${i === 2 ? 'sm:col-span-2' : ''}`}
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border)] flex items-center justify-center text-[var(--primary)] mb-6 shadow-xl group-hover:scale-110 transition-transform">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-lg lg:text-xl font-black text-[var(--text-heading)] uppercase mb-3 tracking-tight">{service.title}</h3>
+                  <p className="text-sm text-[var(--text-primary)] font-light leading-relaxed">{service.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 sm:py-16 bg-[var(--bg-primary)] border-t border-[var(--border)]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <Newsletter />
+        </div>
+      </section>
+    </div>
+  );
+}

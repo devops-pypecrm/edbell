@@ -1,0 +1,219 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Newsletter from '@/components/Newsletter';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  MessageCircle,
+  Globe,
+  Cpu,
+  Shield,
+  Zap,
+  ArrowRight
+} from 'lucide-react';
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+    serviceInterest: 'Career Strategy'
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const loggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      setIsAuthenticated(loggedIn);
+    }
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (submitStatus !== 'idle') setSubmitStatus('idle');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          subject: formData.subject || formData.message.substring(0, 50)
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '', serviceInterest: 'Career Strategy' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[var(--bg-primary)] selection:bg-blue-500/30 overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative pt-24 sm:pt-28 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-12 border-b border-[var(--border)] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80"
+            alt="University Office Backdrop"
+            className="w-full h-full object-cover opacity-20 filter contrast-125 brightness-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-[var(--bg-primary)]/50 to-[var(--bg-primary)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        </div>
+
+        <div className={`relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center space-y-5 sm:space-y-6 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-black text-[var(--text-heading)] leading-[0.8] tracking-tighter uppercase not-italic font-serif ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}>
+            Get in <br />
+            <span className="text-transparent bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--highlight)] bg-clip-text">Touch</span>
+          </h1>
+
+          <p className={`text-sm sm:text-base lg:text-lg text-[var(--text-primary)] font-light max-w-xl mx-auto leading-relaxed ${mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'}`}>
+            Have questions about our courses or services? Our team is here to help you navigate your educational journey. Reach out to us for expert guidance.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-12 sm:py-16 lg:py-20 relative z-10 px-4 sm:px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          {/* Left: Contact Info */}
+          <div className="lg:col-span-5 space-y-8 sm:space-y-10 lg:sticky lg:top-28 animate-slide-right">
+            <div className="space-y-3 sm:space-y-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[var(--text-heading)] uppercase tracking-tighter leading-none">Our Presence</h2>
+              <p className="text-sm sm:text-base text-[var(--text-secondary)] font-light leading-relaxed">
+                EdBell Education Solutions operates across multiple regions, providing world-class educational support to students domestically and internationally. Reach out to our nearest center for personalized assistance.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 sm:gap-6">
+              {[
+                { title: "Head_Office", value: "Wayanad, Kerala", icon: <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />, desc: "Our Main Operations Hub" },
+                { title: "Direct_Line", value: "+91 92413 0060", icon: <Phone className="w-4 h-4 sm:w-5 sm:h-5" />, desc: "Talk to our experts" },
+                { title: "Email_Support", value: "edbelledu@gmail.com", icon: <Mail className="w-4 h-4 sm:w-5 sm:h-5" />, desc: "Get a quick response" }
+              ].map((item, i) => (
+                <div key={i} className="flex space-x-4 group">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-white transition-all shadow-xl flex-shrink-0">
+                    {item.icon}
+                  </div>
+                  <div className="flex-1 space-y-0.5 min-w-0">
+                    <p className="text-[8px] sm:text-[9px] font-black text-[var(--primary)] uppercase tracking-widest">{item.title}</p>
+                    <h4 className="text-sm sm:text-base lg:text-lg font-black text-[var(--text-heading)] uppercase tracking-tight truncate">{item.value}</h4>
+                    <p className="text-xs text-[var(--text-muted)] font-light">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Form */}
+          <div className="lg:col-span-7 animate-slide-left">
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden group">
+              <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(circle_at_1px_1px,var(--text-muted)_1px,transparent_0)] bg-[size:24px_24px]"></div>
+
+              <form onSubmit={handleSubmit} className="relative z-10 space-y-5 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <div className="space-y-2">
+                    <label className="text-[8px] sm:text-[9px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-3">Full Name</label>
+                    <input
+                      type="text" name="name" required value={formData.name} onChange={handleChange}
+                      placeholder="John Doe"
+                      className="w-full bg-white border border-gray-200 rounded-xl sm:rounded-2xl py-3 sm:py-4 px-5 sm:px-6 text-sm sm:text-base text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-bold placeholder:text-gray-400"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[8px] sm:text-[9px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-3">Email Address</label>
+                    <input
+                      type="email" name="email" required value={formData.email} onChange={handleChange}
+                      placeholder="john@example.com"
+                      className="w-full bg-white border border-gray-200 rounded-xl sm:rounded-2xl py-3 sm:py-4 px-5 sm:px-6 text-sm sm:text-base text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-bold placeholder:text-gray-400"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <div className="space-y-2">
+                    <label className="text-[8px] sm:text-[9px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-3">Phone Number</label>
+                    <input
+                      type="tel" name="phone" required value={formData.phone} onChange={handleChange}
+                      placeholder="+91 00000 00000"
+                      className="w-full bg-white border border-gray-200 rounded-xl sm:rounded-2xl py-3 sm:py-4 px-5 sm:px-6 text-sm sm:text-base text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-bold placeholder:text-gray-400"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[8px] sm:text-[9px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-3">Service of Interest</label>
+                    <select
+                      name="serviceInterest" value={formData.serviceInterest} onChange={handleChange}
+                      className="w-full bg-white border border-gray-200 rounded-xl sm:rounded-2xl py-3 sm:py-4 px-5 sm:px-6 text-sm sm:text-base text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-bold appearance-none cursor-pointer"
+                    >
+                      <option value="Career Strategy">Career Strategy</option>
+                      <option value="Global Mobility">Global Mobility</option>
+                      <option value="Capital Support">Capital Support</option>
+                      <option value="Benchmark Prep">Benchmark Prep</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[8px] sm:text-[9px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-3">Your Message</label>
+                  <textarea
+                    name="message" required value={formData.message} onChange={handleChange}
+                    placeholder="Tell us how we can help you with your educational journey..."
+                    rows={4}
+                    className="w-full bg-white border border-gray-200 rounded-xl sm:rounded-2xl py-3 sm:py-5 px-5 sm:px-6 text-sm sm:text-base text-black focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-bold placeholder:text-gray-400 resize-none"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 sm:py-4 bg-[var(--primary)] rounded-xl sm:rounded-2xl text-white font-black text-xs sm:text-sm uppercase tracking-[0.15em] hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] transition-all flex items-center justify-center space-x-3 group/btn overflow-hidden relative"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
+                  <span>{isSubmitting ? 'SENDING...' : 'Send Message'}</span>
+                  <Send className={`h-3.5 w-3.5 transition-transform duration-500 ${isSubmitting ? 'animate-ping' : 'group-hover/btn:translate-x-2'}`} />
+                </button>
+
+                {submitStatus === 'success' && (
+                  <p className="text-emerald-500 text-xs sm:text-sm font-bold text-center animate-bounce">✅ Message sent successfully! We will get back to you soon.</p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-red-500 text-xs sm:text-sm font-bold text-center">❌ Failed to send message. Please try again later.</p>
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 sm:py-16 bg-[var(--bg-primary)] border-t border-[var(--border)]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <Newsletter />
+        </div>
+      </section>
+    </div >
+  );
+}
