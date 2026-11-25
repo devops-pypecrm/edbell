@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Course from '@/models/Course';
+// Registers the University model so populate('offeredByUniversities') works
+// even when this route is loaded before /api/universities.
+import '@/models/University';
 
 // GET - Fetch all courses
 export async function GET() {
@@ -126,7 +129,7 @@ export async function PUT(request: NextRequest) {
       }, { status: 503 });
     }
 
-    const course = await Course.findByIdAndUpdate(_id, updateData, { new: true }).populate('offeredByUniversities', 'name location url logo placeholderBg');
+    const course = await Course.findByIdAndUpdate(_id, updateData, { new: true, runValidators: true }).populate('offeredByUniversities', 'name location url logo placeholderBg');
     if (!course) {
       return NextResponse.json({ success: false, error: 'Course not found' }, { status: 404 });
     }
@@ -140,6 +143,10 @@ export async function PUT(request: NextRequest) {
     console.error('Error updating course:', error);
     if (error.code === 11000) {
       return NextResponse.json({ success: false, error: 'Course URL already exists' }, { status: 400 });
+    }
+    if (error.name === 'ValidationError') {
+      const validationErrors = Object.values(error.errors).map((err: any) => err.message);
+      return NextResponse.json({ success: false, error: `Validation failed: ${validationErrors.join(', ')}` }, { status: 400 });
     }
     return NextResponse.json({ success: false, error: 'Failed to update course' }, { status: 500 });
   }

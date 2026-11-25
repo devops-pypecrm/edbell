@@ -109,7 +109,7 @@ export async function PUT(request: NextRequest) {
       }, { status: 503 });
     }
 
-    const university = await University.findByIdAndUpdate(_id, updateData, { new: true });
+    const university = await University.findByIdAndUpdate(_id, updateData, { new: true, runValidators: true });
     if (!university) {
       return NextResponse.json({ success: false, error: 'University not found' }, { status: 404 });
     }

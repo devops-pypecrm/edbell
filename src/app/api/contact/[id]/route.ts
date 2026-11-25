@@ -37,6 +37,9 @@ export async function PATCH(request: NextRequest) {
     
     // Update contact status directly in collection
     const ObjectId = mongoose.Types.ObjectId;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: 'Invalid contact ID' }, { status: 400 });
+    }
     const result = await mongoose.connection.db?.collection('contacts').updateOne(
       { _id: new ObjectId(id) },
       { 
@@ -95,6 +98,9 @@ export async function GET(request: NextRequest) {
     
     // Get specific contact
     const ObjectId = mongoose.Types.ObjectId;
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ error: 'Invalid contact ID' }, { status: 400 });
+    }
     const contact = await mongoose.connection.db?.collection('contacts').findOne(
       { _id: new ObjectId(id) }
     );

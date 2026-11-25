@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
-import Blog from '@/models/Blog';
+import Blog, { normalizeReadTime } from '@/models/Blog';
 
 // GET - Fetch all blogs
 export async function GET(request: NextRequest) {
@@ -167,7 +167,7 @@ export async function PUT(request: NextRequest) {
       author: updateData.author.trim(),
       category: updateData.category,
       tags: Array.isArray(updateData.tags) ? updateData.tags.filter((tag: string) => tag.trim()) : [],
-      readTime: updateData.readTime.trim(),
+      readTime: normalizeReadTime(updateData.readTime),
       featured: Boolean(updateData.featured),
       published: Boolean(updateData.published),
       publishDate: updateData.publishDate ? new Date(updateData.publishDate) : undefined

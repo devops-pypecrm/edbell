@@ -21,10 +21,12 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Auto-generate serviceId if not provided
+    // Uses the highest existing number, not the count, so deleting a service
+    // can't make the next generated ID collide with an existing one.
     if (!body.serviceId) {
-      const count = await Service.countDocuments();
-      const padded = String(count + 1).padStart(3, '0');
-      body.serviceId = `SERV_${padded}`;
+      const existing = await Service.find({ serviceId: /^SERV_\d+$/ }, { serviceId: 1 }).lean();
+      const max = existing.reduce((m: number, s: any) => Math.max(m, parseInt(s.serviceId.slice(5), 10)), 0);
+      body.serviceId = `SERV_${String(max + 1).padStart(3, '0')}`;
     }
 
     // Filter out empty features (name or details must not be blank)

@@ -169,7 +169,7 @@ export async function PATCH(request: NextRequest) {
     const updatedContact = await Contact.findByIdAndUpdate(
       id,
       { $set: { ...body, updatedAt: new Date() } },
-      { new: true }
+      { new: true, runValidators: true }
     );
 
     if (!updatedContact) {
@@ -177,8 +177,11 @@ export async function PATCH(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true, contact: updatedContact });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error updating contact:', error);
+    if (error.name === 'ValidationError') {
+      return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+    }
     return NextResponse.json({ success: false, error: 'Failed to update contact' }, { status: 500 });
   }
 }

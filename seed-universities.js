@@ -2,16 +2,18 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
 
-// Manually read .env.local since dotenv is not in package.json
-let MONGODB_URI = '';
-try {
-  const envContent = fs.readFileSync(path.join(process.cwd(), '.env.local'), 'utf8');
-  const match = envContent.match(/MONGODB_URI=(.+)/);
-  if (match) {
-    MONGODB_URI = match[1].trim();
+// Read MONGODB_URI from the environment, then .env.local, then .env
+// (dotenv is not in package.json, so the files are parsed manually)
+let MONGODB_URI = process.env.MONGODB_URI || '';
+for (const file of ['.env.local', '.env']) {
+  if (MONGODB_URI) break;
+  try {
+    const envContent = fs.readFileSync(path.join(process.cwd(), file), 'utf8');
+    const match = envContent.match(/^MONGODB_URI=(.+)$/m);
+    if (match) MONGODB_URI = match[1].trim();
+  } catch {
+    // file not present, try the next one
   }
-} catch (err) {
-  console.error('Error reading .env.local:', err.message);
 }
 
 const UniversitySchema = new mongoose.Schema({
@@ -107,7 +109,7 @@ const universities = [
 async function seed() {
   try {
     if (!MONGODB_URI) {
-      throw new Error('MONGODB_URI not found in .env.local');
+      throw new Error('MONGODB_URI not found in environment, .env.local or .env');
     }
     console.log('Connecting to MongoDB...');
     await mongoose.connect(MONGODB_URI);

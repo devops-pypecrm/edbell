@@ -17,6 +17,18 @@ export interface IBlog {
   updatedAt?: Date;
 }
 
+/**
+ * Normalises read time input: "5", "5min", "5 mins", "5 min  read" -> "5 min read" / "5 mins read".
+ * Values that don't look like a read time are returned trimmed, so the schema validator can reject them.
+ * Used by the pre-validate hook and by the update route (findByIdAndUpdate skips document hooks).
+ */
+export function normalizeReadTime(value: string): string {
+  const readTime = value.toLowerCase().trim();
+  const match = readTime.match(/^(\d+)\s*(min|mins|minute|minutes)?\s*(read)?$/);
+  if (!match) return value.trim();
+  return `${match[1]} ${match[2] || 'min'} read`;
+}
+
 const BlogSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -99,8 +111,9 @@ const BlogSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Pre-save middleware to generate slug from title if not provided
-BlogSchema.pre('save', async function() {
+// Runs before validation (not 'save') so the readTime normalisation below
+// happens before the readTime format validator checks it.
+BlogSchema.pre('validate', async function() {
   if (!this.slug && this.title) {
     this.slug = this.title
       .toLowerCase()
@@ -110,36 +123,8 @@ BlogSchema.pre('save', async function() {
       .replace(/^-+|-+$/g, '');
   }
   
-  // Auto-format read time if needed
   if (this.readTime) {
-    const readTime = this.readTime.toLowerCase().trim();
-    
-    // If it's just a number, add "min read"
-    if (/^\d+$/.test(readTime)) {
-      this.readTime = `${readTime} min read`;
-    }
-    // If it's number + space + min/mins/minute/minutes but missing "read"
-    else if (/^\d+\s+(min|mins|minute|minutes)$/i.test(readTime)) {
-      this.readTime = `${readTime} read`;
-    }
-    // If it's number without space + min/mins/minute/minutes but missing "read"
-    else if (/^\d+(min|mins|minute|minutes)$/i.test(readTime)) {
-      const match = readTime.match(/^(\d+)(min|mins|minute|minutes)$/i);
-      if (match) {
-        this.readTime = `${match[1]} ${match[2]} read`;
-      }
-    }
-    // If it has "read" but wrong spacing, normalize it
-    else if (/^\d+\s*(min|mins|minute|minutes)\s*read$/i.test(readTime)) {
-      const match = readTime.match(/^(\d+)\s*(min|mins|minute|minutes)\s*read$/i);
-      if (match) {
-        this.readTime = `${match[1]} ${match[2]} read`;
-      }
-    }
-    // If it's just "X minutes" or "X mins" without "read", add it
-    else if (/^\d+\s*(min|mins|minute|minutes)$/i.test(readTime)) {
-      this.readTime = `${readTime} read`;
-    }
+    this.readTime = normalizeReadTime(this.readTime);
   }
 });
 
@@ -147,6 +132,6 @@ BlogSchema.pre('save', async function() {
 BlogSchema.index({ published: 1, publishDate: -1 });
 BlogSchema.index({ category: 1, published: 1 });
 BlogSchema.index({ featured: 1, published: 1 });
-BlogSchema.index({ slug: 1 });
+// Note: slug already has a unique index from `unique: true` on the field.
 
 export default mongoose.models.Blog || mongoose.model('Blog', BlogSchema);
