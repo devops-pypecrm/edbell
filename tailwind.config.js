@@ -23,6 +23,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        // Teal / navy theme
+        brand: { 50: '#E8F5F2', 100: '#D6EEE9', 200: '#C8E8E2', 300: '#8FD0C4', 600: '#14A28B', 700: '#14A28B', 800: '#071F3E', 900: '#071F3E' },
         // Dark Blue AI Color Theme
         background: {
           primary: '#0B1E3C',
@@ -146,7 +148,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-heading)', 'sans-serif'],
+        sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       spacing: {
         '18': '4.5rem',

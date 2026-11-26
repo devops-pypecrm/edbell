@@ -29,7 +29,7 @@ export default function ConditionalLayout({
       <Analytics />
       <Header />
       <PageTransition>
-        <main className="min-h-screen pt-24 lg:pt-28">
+        <main className="min-h-screen pt-[89px]">
           {children}
         </main>
       </PageTransition>

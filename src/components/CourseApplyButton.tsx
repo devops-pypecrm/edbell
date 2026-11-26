@@ -15,7 +15,7 @@ interface CourseApplyButtonProps {
 export default function CourseApplyButton({ 
   courseId, 
   courseName, 
-  className = "bg-blue-600 hover:bg-blue-700 text-white font-black py-4 px-10 rounded-2xl transition-all duration-300 text-center shadow-[0_0_30px_rgba(37,99,235,0.3)] uppercase tracking-widest text-xs flex items-center justify-center",
+  className = "bg-brand-700 hover:bg-brand-900 text-white font-semibold px-10 py-3 rounded-[10px] transition-colors text-base flex items-center justify-center",
   label = "Apply Now",
   type = "apply"
 }: CourseApplyButtonProps) {

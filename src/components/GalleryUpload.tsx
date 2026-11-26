@@ -130,16 +130,16 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 max-w-2xl mx-auto">
+    <div className="bg-white rounded-lg p-6 max-w-2xl mx-auto">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold text-gray-900 flex items-center">
-          <Camera className="h-5 w-5 mr-2 text-blue-600" />
+        <h3 className="text-xl font-bold text-brand-900 flex items-center">
+          <Camera className="h-5 w-5 mr-2 text-brand-700" />
           Upload New Photo
         </h3>
         {onClose && (
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-black hover:text-black transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -149,18 +149,18 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
       <div className="space-y-6">
         {/* File Upload */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-base font-medium text-black mb-2">
             Select Image *
           </label>
-          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+          <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-brand-600 transition-colors">
             {preview ? (
               <div className="space-y-4">
                 <img
                   src={preview}
                   alt="Preview"
-                  className="max-h-48 mx-auto rounded-lg shadow-md"
+                  className="max-h-48 mx-auto rounded-lg"
                 />
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-black">
                   {selectedFile?.name} ({(selectedFile?.size || 0 / 1024 / 1024).toFixed(2)} MB)
                 </div>
                 <button
@@ -168,20 +168,20 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
                     setSelectedFile(null);
                     setPreview(null);
                   }}
-                  className="text-red-600 hover:text-red-800 text-sm"
+                  className="text-red-600 hover:text-red-800 text-base"
                 >
                   Remove Image
                 </button>
               </div>
             ) : (
               <div className="space-y-4">
-                <Upload className="h-12 w-12 text-gray-400 mx-auto" />
+                <Upload className="h-12 w-12 text-black mx-auto" />
                 <div>
                   <label className="cursor-pointer">
-                    <span className="text-blue-600 hover:text-blue-800 font-medium">
+                    <span className="text-brand-700 hover:text-brand-700 font-medium">
                       Click to upload
                     </span>
-                    <span className="text-gray-600"> or drag and drop</span>
+                    <span className="text-black"> or drag and drop</span>
                     <input
                       type="file"
                       accept="image/*"
@@ -190,7 +190,7 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
                     />
                   </label>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-base text-black">
                   PNG, JPG, GIF up to 5MB
                 </p>
               </div>
@@ -201,26 +201,26 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
         {/* Form Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-black mb-1">
               Title *
             </label>
             <input
               type="text"
               value={formData.title}
               onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-gray-500 rounded-[22px]-md px-3 py-2 focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               placeholder="Enter photo title"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-black mb-1">
               Category *
             </label>
             <select
               value={formData.category}
               onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-brand-600 focus:border-transparent"
             >
               {categories.map(cat => (
                 <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -229,52 +229,52 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-black mb-1">
               Event Date
             </label>
             <input
               type="date"
               value={formData.eventDate}
               onChange={(e) => setFormData(prev => ({ ...prev, eventDate: e.target.value }))}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-gray-500 rounded-[22px]-md px-3 py-2 focus:ring-2 focus:ring-brand-600 focus:border-transparent"
             />
           </div>
 
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-black mb-1">
               Location
             </label>
             <input
               type="text"
               value={formData.location}
               onChange={(e) => setFormData(prev => ({ ...prev, location: e.target.value }))}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-gray-500 rounded-[22px]-md px-3 py-2 focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               placeholder="e.g., Main Auditorium, Campus Library"
             />
           </div>
 
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-black mb-1">
               Description *
             </label>
             <textarea
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               placeholder="Describe the photo (minimum 10 characters)"
             />
           </div>
 
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-base font-medium text-black mb-1">
               Tags
             </label>
             <input
               type="text"
               value={formData.tags}
               onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
-              className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full border border-gray-500 rounded-[22px]-md px-3 py-2 focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               placeholder="Separate tags with commas (e.g., graduation, ceremony, 2024)"
             />
           </div>
@@ -285,9 +285,9 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
                 type="checkbox"
                 checked={formData.featured}
                 onChange={(e) => setFormData(prev => ({ ...prev, featured: e.target.checked }))}
-                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="rounded border-gray-300 text-brand-700 focus:ring-brand-600"
               />
-              <span className="ml-2 text-sm text-gray-700">Featured Photo</span>
+              <span className="ml-2 text-base text-black">Featured Photo</span>
             </label>
 
             <label className="flex items-center">
@@ -295,9 +295,9 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
                 type="checkbox"
                 checked={formData.published}
                 onChange={(e) => setFormData(prev => ({ ...prev, published: e.target.checked }))}
-                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                className="rounded border-gray-300 text-brand-700 focus:ring-brand-600"
               />
-              <span className="ml-2 text-sm text-gray-700">Publish Immediately</span>
+              <span className="ml-2 text-base text-black">Publish Immediately</span>
             </label>
           </div>
         </div>
@@ -307,7 +307,7 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
           {onClose && (
             <button
               onClick={onClose}
-              className="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
+              className="px-4 py-2 text-black bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
             >
               Cancel
             </button>
@@ -315,11 +315,11 @@ export default function GalleryUpload({ onUploadSuccess, onClose }: GalleryUploa
           <button
             onClick={handleUpload}
             disabled={uploading || !selectedFile}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white rounded-md transition-colors flex items-center space-x-2"
+            className="px-6 py-2 bg-brand-700 hover:bg-brand-800 disabled:bg-gray-400 text-white rounded-md transition-colors flex items-center space-x-2"
           >
             {uploading ? (
               <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-200"></div>
                 <span>Uploading...</span>
               </>
             ) : (

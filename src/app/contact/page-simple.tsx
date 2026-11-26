@@ -28,16 +28,16 @@ export default function Contact() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-800 via-blue-900 to-blue-700">
-        <div className="relative py-20 sm:py-24 lg:py-32 text-center px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-500/30 backdrop-blur-sm rounded-2xl mb-8">
-              <Mail className="h-8 w-8 text-white" />
+      <section className="relative overflow-hidden ">
+        <div className="relative py-20 sm:py-16 lg:py-24 text-center px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="w-[60px] h-[60px] rounded-full bg-brand-700 text-white flex items-center justify-center mb-4">
+              <Mail className="h-8 w-8 text-gray-900" />
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               Get Started Today
             </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl text-brand-700 max-w-3xl mx-auto">
               Ready to transform your career? Get in touch with our expert counselors for personalized guidance 
               on your educational journey and career goals.
             </p>
@@ -46,12 +46,12 @@ export default function Contact() {
       </section>
 
       {/* Contact Form */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+      <section className="py-16 px-4 ">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-white rounded-lg p-8">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Send Us a Message</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-black max-w-2xl mx-auto">
                 We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
               </p>
             </div>
@@ -59,7 +59,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-base font-medium text-black mb-2">
                     Full Name *
                   </label>
                   <input
@@ -69,12 +69,12 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-500 rounded-[22px] focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     placeholder="Enter your full name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-base font-medium text-black mb-2">
                     Email Address *
                   </label>
                   <input
@@ -84,7 +84,7 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-500 rounded-[22px] focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -92,7 +92,7 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-base font-medium text-black mb-2">
                     Phone Number *
                   </label>
                   <input
@@ -102,12 +102,12 @@ export default function Contact() {
                     required
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-500 rounded-[22px] focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     placeholder="Enter your phone number"
                   />
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="subject" className="block text-base font-medium text-black mb-2">
                     Subject *
                   </label>
                   <input
@@ -117,14 +117,14 @@ export default function Contact() {
                     required
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-500 rounded-[22px] focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     placeholder="Enter subject"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-base font-medium text-black mb-2">
                   Message *
                 </label>
                 <textarea
@@ -134,7 +134,7 @@ export default function Contact() {
                   rows={6}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                   placeholder="Enter your message"
                 />
               </div>
@@ -142,7 +142,7 @@ export default function Contact() {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 transform hover:scale-105"
+                  className="bg-brand-700 hover:bg-brand-800 text-white font-semibold py-4 px-8 rounded-[10px] transition-colors duration-200 transform"
                 >
                   Send Message
                 </button>
@@ -153,33 +153,33 @@ export default function Contact() {
       </section>
 
       {/* Contact Info */}
-      <section className="py-16 px-4 bg-blue-50">
+      <section className="py-16 px-4 bg-brand-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Get in Touch</h2>
-            <p className="text-gray-600">Multiple ways to reach us for your educational needs</p>
+            <p className="text-black">Multiple ways to reach us for your educational needs</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
-              <MapPin className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Location</h3>
-              <p className="text-gray-600">15/382, Calicut Tower</p>
-              <p className="text-gray-600">Kozhikode Road, Wayanad</p>
-              <p className="text-gray-600">Kerala, India</p>
+            <div className="bg-white rounded-lg p-8 text-center">
+              <MapPin className="h-12 w-12 text-brand-700 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-brand-900 mb-2">Our Location</h3>
+              <p className="text-black">15/382, Calicut Tower</p>
+              <p className="text-black">Kozhikode Road, Wayanad</p>
+              <p className="text-black">Kerala, India</p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
-              <Phone className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Phone Numbers</h3>
-              <p className="text-gray-600">+91 92413 0060</p>
+            <div className="bg-white rounded-lg p-8 text-center">
+              <Phone className="h-12 w-12 text-brand-700 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-brand-900 mb-2">Phone Numbers</h3>
+              <p className="text-black">+91 92413 0060</p>
             </div>
             
-            <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
-              <Mail className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
-              <p className="text-gray-600">info@edbelledusolutions.com</p>
-              <p className="text-gray-600">admissions@edbelledusolutions.com</p>
+            <div className="bg-white rounded-lg p-8 text-center">
+              <Mail className="h-12 w-12 text-brand-700 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-brand-900 mb-2">Email</h3>
+              <p className="text-black">info@edbelledusolutions.com</p>
+              <p className="text-black">admissions@edbelledusolutions.com</p>
             </div>
           </div>
         </div>

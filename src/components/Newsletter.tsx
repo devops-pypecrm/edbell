@@ -45,17 +45,17 @@ export default function Newsletter({ variant = 'default', className = '' }: News
 
   if (variant === 'sidebar') {
     return (
-      <div className={`bg-[var(--bg-primary)]/60 backdrop-blur-3xl border border-[var(--border)] rounded-[40px] p-8 space-y-6 ${className}`}>
-        <div className="space-y-4">
-          <span className="text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">Signal Subscription</span>
-          <h3 className="text-xl font-black text-[var(--text-heading)] uppercase tracking-tighter">Stay Connected</h3>
+      <div className={`sk-card p-6 space-y-4 ${className}`}>
+        <div className="space-y-1">
+          <span className="text-[15px] sk-role">Signal Subscription</span>
+          <h3 className="text-2xl font-bold text-brand-900">Stay Connected</h3>
         </div>
         {!isAuthenticated ? (
-          <button onClick={() => router.push('/login')} className="w-full py-4 bg-[var(--surface)] border border-[var(--border)] rounded-2xl text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest hover:text-[var(--text-heading)] transition-all">Initialize Auth</button>
+          <button onClick={() => router.push('/login')} className="inline-flex items-center justify-center gap-2 px-10 py-3 bg-brand-700 rounded-[10px] text-white text-[15px] font-semibold hover:bg-brand-900 transition-colors text-center w-full">Initialize Auth</button>
         ) : isSubscribed ? (
           <div className="flex items-center space-x-3 text-emerald-500">
             <CheckCircle className="h-5 w-5" />
-            <span className="text-[10px] font-black uppercase tracking-widest">{message}</span>
+            <span className="text-sm font-bold">{message}</span>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-3">
@@ -64,10 +64,10 @@ export default function Newsletter({ variant = 'default', className = '' }: News
               placeholder="IDENT_EMAIL"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl px-6 py-4 text-xs font-bold text-[var(--text-heading)] focus:border-[var(--primary)]/50 outline-none transition-all"
+              className="sk-input"
               required
             />
-            <button type="submit" disabled={isLoading} className="w-full py-4 bg-[var(--primary)] rounded-2xl text-[10px] font-black text-white uppercase tracking-widest hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all">
+            <button type="submit" disabled={isLoading} className="inline-flex items-center justify-center gap-2 px-10 py-3 bg-brand-700 rounded-[10px] text-white text-[15px] font-semibold hover:bg-brand-900 transition-colors text-center w-full">
               {isLoading ? <Loader2 className="h-4 w-4 animate-spin mx-auto" /> : 'Subscribe Node'}
             </button>
           </form>
@@ -77,38 +77,38 @@ export default function Newsletter({ variant = 'default', className = '' }: News
   }
 
   return (
-    <div className={`relative bg-[var(--bg-secondary)] border border-[var(--border)] rounded-[48px] p-10 lg:p-16 overflow-hidden ${className}`}>
-      <div className="absolute top-0 right-0 p-12 opacity-10">
-        <Sparkles className="h-24 w-24 text-[var(--primary)]" />
+    <div className={`sk-card p-8 lg:p-12 ${className}`}>
+      <div className="hidden">
+        <Sparkles className="h-24 w-24 text-brand-700" />
       </div>
-      <div className="relative z-10 max-w-2xl mx-auto text-center space-y-8">
-        <div className="inline-flex items-center space-x-3 text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.5em]">
-          <Zap className="h-4 w-4" />
+      <div className="grid lg:grid-cols-12 gap-4 lg:gap-x-12 items-center">
+        <div className="lg:col-span-12 text-lg lg:text-[22px] font-semibold text-black">
+          <Zap className="hidden" />
           <span>Intelligence Stream</span>
         </div>
-        <h3 className="text-4xl lg:text-6xl font-black text-[var(--text-heading)] uppercase tracking-tighter leading-none">Stay Ahead of the Curve</h3>
-        <p className="text-lg text-[var(--text-primary)] font-light max-w-lg mx-auto">Join our elite network of students and professionals receiving real-time insights and career opportunities.</p>
+        <h3 className="lg:col-span-12 text-3xl lg:text-[45px] lg:leading-tight font-bold text-brand-900">Stay Ahead of the Curve</h3>
+        <p className="lg:col-span-8 text-[17px] text-black max-w-xl">Join our elite network of students and professionals receiving real-time insights and career opportunities.</p>
 
         {!isAuthenticated ? (
-          <button onClick={() => router.push('/login')} className="px-12 py-5 bg-[var(--surface)] border border-[var(--border)] rounded-3xl text-[10px] font-black text-[var(--text-heading)] uppercase tracking-[0.3em] hover:bg-[var(--primary)] hover:text-white transition-all">Connect Terminal</button>
+          <button onClick={() => router.push('/login')} className="inline-flex items-center justify-center gap-2 px-10 py-3 bg-brand-700 rounded-[10px] text-white text-[15px] font-semibold hover:bg-brand-900 transition-colors text-center lg:col-span-4 lg:justify-self-end">Connect Terminal</button>
         ) : isSubscribed ? (
-          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-3xl p-8 inline-block">
-            <div className="flex items-center space-x-4 text-emerald-500">
-              <CheckCircle className="h-8 w-8" />
-              <span className="text-xl font-black uppercase tracking-tighter">{message}</span>
+          <div className="lg:col-span-4">
+            <div className="flex items-center gap-3 text-green-800">
+              <CheckCircle className="h-6 w-6 shrink-0" />
+              <span className="font-semibold">{message}</span>
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+          <form onSubmit={handleSubmit} className="lg:col-span-4 flex flex-col sm:flex-row gap-3 min-w-0">
             <input
               type="email"
               placeholder="Terminal Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-[var(--surface)] border border-[var(--border)] rounded-3xl px-8 py-5 text-sm font-bold text-[var(--text-heading)] focus:border-[var(--primary)]/50 outline-none transition-all placeholder:text-[var(--text-muted)]"
+              className="flex-1 min-w-0 sk-input"
               required
             />
-            <button type="submit" disabled={isLoading} className="px-10 py-5 bg-[var(--primary)] rounded-3xl text-[10px] font-black text-white uppercase tracking-[0.3em] hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-all">
+            <button type="submit" disabled={isLoading} className="inline-flex items-center justify-center gap-2 px-10 py-3 bg-brand-700 rounded-[10px] text-white text-[15px] font-semibold hover:bg-brand-900 transition-colors text-center">
               {isLoading ? <Loader2 className="h-5 w-5 animate-spin mx-auto" /> : 'Subscribe'}
             </button>
           </form>

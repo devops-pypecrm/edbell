@@ -29,14 +29,14 @@ export default function AnimationShowcase() {
   ] as const;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-slate-900 to-cyan-950 py-20 px-4">
+    <div className="min-h-screen py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <AnimatedSection animation="slide-up" className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-cyan-100 mb-4">
+          <h1 className="text-5xl font-bold text-brand-700 mb-4">
             Animation Showcase
           </h1>
-          <p className="text-xl text-cyan-300">
+          <p className="text-xl text-brand-700">
             Scroll down to see all animations in action
           </p>
         </AnimatedSection>
@@ -44,7 +44,7 @@ export default function AnimationShowcase() {
         {/* Entrance Animations */}
         <section className="mb-20">
           <AnimatedSection animation="slide-up" className="mb-12">
-            <h2 className="text-3xl font-bold text-cyan-100 mb-8">
+            <h2 className="text-3xl font-bold text-brand-700 mb-8">
               1️⃣ Entrance Animations
             </h2>
           </AnimatedSection>
@@ -56,12 +56,12 @@ export default function AnimationShowcase() {
                 animation={anim.name as any}
                 delay={index * 0.1}
               >
-                <div className="bg-slate-800/50 border border-blue-500/30 rounded-xl p-8 text-center hover:border-cyan-400 transition-all duration-300">
+                <div className="sk-card p-8 text-center transition-all duration-300">
                   <div className="text-4xl mb-4">✨</div>
-                  <h3 className="text-lg font-bold text-cyan-100 mb-2">
+                  <h3 className="text-lg font-bold text-brand-700 mb-2">
                     {anim.name}
                   </h3>
-                  <p className="text-sm text-cyan-300">{anim.description}</p>
+                  <p className="text-base text-brand-700">{anim.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -71,7 +71,7 @@ export default function AnimationShowcase() {
         {/* Floating Animations */}
         <section className="mb-20">
           <AnimatedSection animation="slide-up" className="mb-12">
-            <h2 className="text-3xl font-bold text-cyan-100 mb-8">
+            <h2 className="text-3xl font-bold text-brand-700 mb-8">
               4️⃣ Floating Animations
             </h2>
           </AnimatedSection>
@@ -83,14 +83,14 @@ export default function AnimationShowcase() {
                 animation="fade-up"
                 delay={index * 0.1}
               >
-                <div className="bg-slate-800/50 border border-blue-500/30 rounded-xl p-8 text-center hover:border-cyan-400 transition-all duration-300">
-                  <div className={`text-cyan-400 mb-4 flex justify-center animate-${anim.name}`}>
+                <div className="sk-card p-8 text-center transition-all duration-300">
+                  <div className={`text-brand-700 mb-4 flex justify-center animate-${anim.name}`}>
                     {anim.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-cyan-100 mb-2">
+                  <h3 className="text-lg font-bold text-brand-700 mb-2">
                     {anim.name}
                   </h3>
-                  <p className="text-sm text-cyan-300">Continuous animation</p>
+                  <p className="text-base text-brand-700">Continuous animation</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -100,7 +100,7 @@ export default function AnimationShowcase() {
         {/* Hover Animations */}
         <section className="mb-20">
           <AnimatedSection animation="slide-up" className="mb-12">
-            <h2 className="text-3xl font-bold text-cyan-100 mb-8">
+            <h2 className="text-3xl font-bold text-brand-700 mb-8">
               5️⃣ Hover Animations
             </h2>
           </AnimatedSection>
@@ -118,12 +118,12 @@ export default function AnimationShowcase() {
                 animation="fade-up"
                 delay={index * 0.1}
               >
-                <div className={`bg-slate-800/50 border border-blue-500/30 rounded-xl p-8 text-center hover:border-cyan-400 transition-all duration-300 ${anim.name}`}>
+                <div className={`sk-card p-8 text-center transition-all duration-300${anim.name}`}>
                   <div className="text-4xl mb-4">👆</div>
-                  <h3 className="text-lg font-bold text-cyan-100 mb-2">
+                  <h3 className="text-lg font-bold text-brand-700 mb-2">
                     {anim.name}
                   </h3>
-                  <p className="text-sm text-cyan-300">{anim.description}</p>
+                  <p className="text-base text-brand-700">{anim.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -133,40 +133,40 @@ export default function AnimationShowcase() {
         {/* Text Animations */}
         <section className="mb-20">
           <AnimatedSection animation="slide-up" className="mb-12">
-            <h2 className="text-3xl font-bold text-cyan-100 mb-8">
+            <h2 className="text-3xl font-bold text-brand-700 mb-8">
               6️⃣ Text Animations
             </h2>
           </AnimatedSection>
 
           <div className="space-y-8">
             <AnimatedSection animation="fade-up">
-              <div className="bg-slate-800/50 border border-blue-500/30 rounded-xl p-8">
-                <h3 className="text-lg font-bold text-cyan-100 mb-4">
+              <div className="sk-card p-8">
+                <h3 className="text-lg font-bold text-brand-700 mb-4">
                   Typewriter Effect
                 </h3>
-                <p className="animate-typewriter text-2xl font-bold text-cyan-300">
+                <p className="animate-typewriter text-2xl font-bold text-brand-700">
                   Transform Your Future
                 </p>
               </div>
             </AnimatedSection>
 
             <AnimatedSection animation="fade-up" delay={0.1}>
-              <div className="bg-slate-800/50 border border-blue-500/30 rounded-xl p-8">
-                <h3 className="text-lg font-bold text-cyan-100 mb-4">
+              <div className="sk-card p-8">
+                <h3 className="text-lg font-bold text-brand-700 mb-4">
                   Gradient Shift
                 </h3>
-                <p className="animate-gradient-shift text-2xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                <p className="text-2xl font-bold text-brand-700">
                   Animated Gradient Text
                 </p>
               </div>
             </AnimatedSection>
 
             <AnimatedSection animation="fade-up" delay={0.2}>
-              <div className="bg-slate-800/50 border border-blue-500/30 rounded-xl p-8">
-                <h3 className="text-lg font-bold text-cyan-100 mb-4">
+              <div className="sk-card p-8">
+                <h3 className="text-lg font-bold text-brand-700 mb-4">
                   Text Reveal
                 </h3>
-                <p className="animate-text-reveal text-lg text-cyan-300">
+                <p className="animate-text-reveal text-lg text-brand-700">
                   This text reveals with a smooth fade-up animation
                 </p>
               </div>
@@ -177,7 +177,7 @@ export default function AnimationShowcase() {
         {/* Stagger Animation */}
         <section className="mb-20">
           <AnimatedSection animation="slide-up" className="mb-12">
-            <h2 className="text-3xl font-bold text-cyan-100 mb-8">
+            <h2 className="text-3xl font-bold text-brand-700 mb-8">
               Staggered List Animation
             </h2>
           </AnimatedSection>
@@ -185,8 +185,8 @@ export default function AnimationShowcase() {
           <div className="space-y-4">
             {[1, 2, 3, 4, 5].map((item) => (
               <div key={item} className="stagger-item">
-                <div className="bg-slate-800/50 border border-blue-500/30 rounded-xl p-6 hover:border-cyan-400 transition-all duration-300">
-                  <p className="text-cyan-300">
+                <div className="sk-card p-6 transition-all duration-300">
+                  <p className="text-brand-700">
                     Item {item} - Each item has automatic staggered delay
                   </p>
                 </div>
@@ -198,15 +198,15 @@ export default function AnimationShowcase() {
         {/* Combined Animation Example */}
         <section>
           <AnimatedSection animation="slide-up" className="mb-12">
-            <h2 className="text-3xl font-bold text-cyan-100 mb-8">
+            <h2 className="text-3xl font-bold text-brand-700 mb-8">
               Combined Animations
             </h2>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <AnimatedSection animation="zoom-in">
-              <div className="bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl p-8 text-white hover-lift">
-                <div className="animate-floating mb-4">
+              <div className="bg-brand-700 rounded-[10px] p-8 text-white hover-lift">
+                <div className="mb-4">
                   <Sparkles className="w-12 h-12" />
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Zoom + Hover + Float</h3>
@@ -215,7 +215,7 @@ export default function AnimationShowcase() {
             </AnimatedSection>
 
             <AnimatedSection animation="fade-up" delay={0.2}>
-              <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl p-8 text-white hover-glow">
+              <div className="bg-brand-700 rounded-[10px] p-8 text-white hover-glow">
                 <div className="animate-pulse-bright mb-4">
                   <Heart className="w-12 h-12" />
                 </div>

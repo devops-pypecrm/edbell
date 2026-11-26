@@ -358,16 +358,16 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
 
   if (!post) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-50">
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-6">
-            <BookOpen className="h-10 w-10 text-gray-400" />
+            <BookOpen className="h-10 w-10 text-black" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-4">Article Not Found</h1>
-          <p className="text-gray-600 mb-8">The article you're looking for doesn't exist or has been moved.</p>
+          <p className="text-black mb-8">The article you're looking for doesn't exist or has been moved.</p>
           <Link 
             href="/blog" 
-            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 inline-flex items-center space-x-2"
+            className="bg-brand-700 text-white px-6 py-3 rounded-[10px] font-semibold transition-all duration-300 transform inline-flex items-center space-x-2"
           >
             <ArrowLeft className="h-5 w-5" />
             <span>Back to Blog</span>

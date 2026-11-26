@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,13 +5,34 @@
 
 @layer base {
   :root {
-    /* Premium Dark Blue / Navy Theme */
+    --bg-primary: transparent;
+    --bg-secondary: #FFFFFF;
+    --primary: #14A28B;
+    --primary-light: #14A28B;
+    --secondary: #14A28B;
+    --accent: #14A28B;
+    --highlight: #14A28B;
+    --success: #1F7A4D;
+    --warning: #B7791F;
+    --error: #B42318;
+    --surface: #FFFFFF;
+    --surface-alt: #F4F5F8;
+    --border: #DFE2EA;
+    --text-heading: #071F3E;
+    --text-primary: #111111;
+    --text-secondary: #111111;
+    --text-muted: #667085;
+  }
+
+  /* The admin panel keeps its existing dark palette */
+  main.h-screen {
+    
     --bg-primary: #0A192F;
-    /* Deep Navy */
+    
     --bg-secondary: #0D1B3E;
-    /* Lighter Navy */
+    
     --primary: #0066CC;
-    /* EDBELL Blue */
+    
     --primary-light: #3399FF;
     --secondary: #0066CC;
     --accent: #0052A3;
@@ -21,7 +41,7 @@
     --warning: #F59E0B;
     --error: #EF4444;
     --surface: #112240;
-    /* Card Navy */
+    
     --surface-alt: #172A45;
     --border: rgba(100, 255, 218, 0.1);
     --text-heading: #F8FAFC;
@@ -57,7 +77,7 @@
   }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--bg-primary);
@@ -2468,3 +2488,96 @@ main {
 .animation-delay-800 {
   animation-delay: 0.8s;
 }
+
+/* Headings use the display face; admin is unaffected */
+main:not(.h-screen) :is(h1, h2, h3) { font-family: var(--font-heading), sans-serif; letter-spacing: 0; }
+::selection { background: #14A28B; color: #fff; }
+:focus-visible { outline: 2px solid #14A28B; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, ::before, ::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* ===== Site theme: cream grid paper, teal + navy, offset-edge cards ===== */
+body:not(:has(main.h-screen)) {
+  background-color: #FFFAE7;
+  font-weight: 500;
+  color: #000;
+}
+main:not(.h-screen) { position: relative; }
+main:not(.h-screen)::before,
+.sk-white::before,
+.sk-mint::before,
+.sk-navy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(7, 31, 62, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(7, 31, 62, .05) 1px, transparent 1px),
+    radial-gradient(rgba(7, 31, 62, .2) .7px, transparent .9px);
+  background-size: 60px 60px, 60px 60px, 15px 15px;
+}
+main:not(.h-screen) > * { position: relative; }
+.sk-white, .sk-mint, .sk-navy { position: relative; }
+.sk-white > *, .sk-mint > *, .sk-navy > * { position: relative; }
+.sk-white { background: #fff; }
+.sk-mint { background: linear-gradient(#FFFAE7, #C8E5D4); }
+.sk-navy { background: #071F3E; overflow: hidden; }
+.sk-navy::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='352' height='132'%3E%3Cg font-family='Chakra Petch,Arial,sans-serif' font-size='54' font-weight='700'%3E%3Ctext x='20' y='54' fill='%2314A28B' fill-opacity='.1'%3EEDBELL%3C/text%3E%3Ctext x='20' y='120' fill='%23fff' fill-opacity='.07'%3EEDBELL%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-size: 260px auto;
+}
+
+.sk-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #071F3E;
+  border-right-width: 5px;
+  border-bottom-width: 5px;
+  border-radius: 25px;
+  transition: transform .25s;
+}
+a:hover > .sk-card, a.sk-card:hover { transform: translateY(-4px); }
+.sk-navy .sk-card, .sk-shot { border-color: #14A28B; }
+.sk-shot { border-style: solid; border-width: 0 4px 4px 0; border-radius: 25px; overflow: hidden; }
+.sk-photo { background: #14A28B; border: 1px solid #071F3E; border-radius: 20px; overflow: hidden; }
+
+/* course cards: mint title box with round icon, every second card inverted */
+.sk-course { display: flex; flex-direction: column; height: 100%; padding: 32px 20px 28px; }
+.sk-course::after {
+  content: '';
+  position: absolute; top: 34px; right: 18px; width: 44px; height: 50px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 50'%3E%3Cpath d='M16 0q2 14 15 16-13 2-15 16Q14 18 1 16 14 14 16 0zM34 22q1 9 9 10-8 1-9 10-1-9-9-10 8-1 9-10zM17 34q1 7 7 8-6 1-7 8-1-7-7-8 6-1 7-8z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 50'%3E%3Cpath d='M16 0q2 14 15 16-13 2-15 16Q14 18 1 16 14 14 16 0zM34 22q1 9 9 10-8 1-9 10-1-9-9-10 8-1 9-10zM17 34q1 7 7 8-6 1-7 8-1-7-7-8 6-1 7-8z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.sk-course .sk-ico { position: absolute; z-index: 1; left: 34px; top: 60px; width: 60px; height: 60px; border-radius: 50%; background: #14A28B; color: #fff; display: flex; align-items: center; justify-content: center; }
+.sk-course .sk-name { background: #C8E8E2; color: #071F3E; border-radius: 20px; min-height: 116px; padding: 12px 12px 12px 88px; margin-right: 62px; display: flex; align-items: center; font: 600 20px/1.35 var(--font-heading), sans-serif; }
+.sk-cards > :nth-child(3n+2) .sk-course { background: #071F3E; border-color: #14A28B; color: #fff; }
+.sk-cards > :nth-child(3n+2) .sk-course :not(.sk-name):not(.sk-ico):not(.sk-ico *) { color: #fff; border-color: rgba(255,255,255,.6); }
+.sk-cards > :nth-child(3n+2) .sk-course .sk-name { background: #fff; }
+
+/* crossed ribbons; words are the site's own feature titles */
+.sk-ribbon { position: absolute; left: -2%; width: 104%; overflow: hidden; white-space: nowrap; color: #fff; padding: 12px 0; font: 700 clamp(17px, 1.9vw, 27px)/1.3 var(--font-heading), sans-serif; }
+.sk-ribbon::before {
+  content: 'World-Class Education ✦ Global Recognition ✦ Flexible Learning ✦ Career Growth ✦ Secure & Verified ✦ Fast Track Programs ✦ World-Class Education ✦ Global Recognition ✦ Flexible Learning ✦ Career Growth ✦ Secure & Verified ✦ Fast Track Programs ✦ ' / '';
+  display: inline-block; animation: sk-slide 40s linear infinite;
+}
+.sk-ribbon-a { bottom: 100px; background: #14A28B; transform: rotate(1deg); }
+.sk-ribbon-b { bottom: 24px; background: #000; transform: rotate(-1deg); }
+.sk-ribbon-b::before { animation-direction: reverse; }
+@keyframes sk-slide { to { transform: translateX(-50%); } }
+
+/* hand-drawn marks around the hero photo */
+.sk-doodle::before {
+  content: ''; position: absolute; inset: -40px -60px 0; pointer-events: none; z-index: 2;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 560 600' fill='none' stroke='%23222' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M46 70c-4-14 18-18 20-3 2 18-32 20-34-2-2-28 46-34 50-4 4 34-58 42-64 6'/%3E%3Cpath d='M492 46l18-28 12 14-22 18zM514 62l28-14 4 16-28 4z'/%3E%3Cpath d='M8 220l18-24 6 20 20-6-14 34-6-20z'/%3E%3Cpath d='M508 230q14-18 24-6t24-8M508 246q14-18 24-6t24-8'/%3E%3Cpath d='M524 470l26 50-52 6z'/%3E%3Cpath d='M6 480h18v18H6zM34 516l12-20 12 20z'/%3E%3Ccircle cx='14' cy='526' r='10'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+}
+
+/* logo: the JPG has a white background, shown white on dark bars */
+.sk-logo { filter: grayscale(1) invert(1) brightness(1.5) contrast(1.4); mix-blend-mode: screen; object-fit: cover; }
+.sk-foot-h { font: 600 26px/1.2 var(--font-heading), sans-serif; color: #fff; padding-bottom: 12px; background: linear-gradient(#14A28B, #14A28B) 0 100%/50px 3px no-repeat, radial-gradient(#14A28B 1.2px, transparent 1.6px) 54px 100%/4px 3px no-repeat; }
+.sk-input { width: 100%; background: #fff; border: 1px solid #5b6675; border-radius: 22px; padding: 11px 20px; font-size: 16px; outline: none; }
+.sk-input:focus { border-color: #14A28B; box-shadow: 0 0 0 3px rgba(20, 162, 139, .2); }
+.sk-role { color: #14A28B; }
+.sk-person::after { content: '›'; position: absolute; right: 20px; bottom: 26px; width: 34px; height: 34px; border-radius: 50%; background: #071F3E; color: #fff; font: 700 26px/29px var(--font-heading), sans-serif; text-align: center; }
+.sk-arrow { display: inline-block; padding: 8px 0 8px 22px; min-height: 0 !important; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 14' fill='none' stroke='%2314A28B' stroke-width='2'%3E%3Cpath d='M1 1l6 6-6 6'/%3E%3C/svg%3E") 2px 50%/8px 14px no-repeat; }

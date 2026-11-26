@@ -77,75 +77,75 @@ export default function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] flex flex-col justify-center relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex flex-col justify-center relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+        <div className="hidden"></div>
+        <div className="hidden"></div>
       </div>
 
       <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center mb-8">
           <Link href="/" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-white/[0.03] border border-white/[0.1] rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-              <ShieldCheck className="h-7 w-7 text-blue-500" />
+            <div className="w-12 h-12 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center transition-all duration-300">
+              <ShieldCheck className="h-7 w-7 text-brand-700" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-100 tracking-tight leading-none mb-1">EDBELL</h1>
-              <p className="text-[10px] text-slate-500 font-bold tracking-[0.2em] uppercase">Edusolutions LLP</p>
+              <h1 className="text-2xl font-bold text-black leading-tight mb-1">EDBELL</h1>
+              <p className="text-base text-black font-semibold">Edusolutions LLP</p>
             </div>
           </Link>
         </div>
 
         <div className="text-center space-y-2 mb-8">
-          <h2 className="text-3xl font-bold text-slate-100 tracking-tight">
+          <h2 className="text-3xl font-bold text-black">
             Partner Registration
           </h2>
-          <p className="text-slate-400 font-light">
+          <p className="text-black font-normal">
             Join India's fastest growing educational ecosystem
           </p>
         </div>
       </div>
 
       <div className="relative z-10 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] py-8 px-6 shadow-2xl sm:rounded-3xl sm:px-10">
+        <div className="bg-gray-50 border border-gray-200 py-8 px-6 sm:px-10">
           {success ? (
             <div className="text-center py-12 space-y-6">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500/10 border border-green-500/20 rounded-3xl animate-bounce">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500/10 border border-green-500/20 rounded-lg">
                 <CheckCircle className="h-10 w-10 text-green-500" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-2xl font-bold text-slate-100">Welcome on Board!</h3>
-                <p className="text-slate-400 font-light">
+                <h3 className="text-2xl font-bold text-black">Welcome on Board!</h3>
+                <p className="text-black font-normal">
                   Your partner account has been created successfully. Redirecting you to the portal...
                 </p>
               </div>
               <div className="flex justify-center">
-                <div className="animate-spin rounded-full h-8 w-8 border-2 border-blue-500/20 border-t-blue-500"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-2 border-brand-200 border-t-brand-600"></div>
               </div>
             </div>
           ) : (
             <form className="space-y-5" onSubmit={handleSubmit}>
               {error && (
-                <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 animate-shake">
+                <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 animate-shake">
                   <div className="flex">
                     <AlertCircle className="h-5 w-5 text-red-500" />
                     <div className="ml-3">
-                      <p className="text-sm text-red-400">{error}</p>
+                      <p className="text-base text-red-700">{error}</p>
                     </div>
                   </div>
                 </div>
               )}
 
               <div className="space-y-1">
-                <label htmlFor="name" className="block text-sm font-medium text-slate-300 ml-1">
+                <label htmlFor="name" className="block text-base font-medium text-black ml-1">
                   Full Name
                 </label>
                 <div className="relative group">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl blur opacity-0 group-focus-within:opacity-20 transition-all duration-300"></div>
+                  <div className="hidden"></div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <User className="h-5 w-5 text-slate-500 group-focus-within:text-blue-500 transition-colors" />
+                      <User className="h-5 w-5 text-black group-focus-within:text-brand-700 transition-colors" />
                     </div>
                     <input
                       id="name"
@@ -154,7 +154,7 @@ export default function Signup() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="block w-full pl-12 pr-4 py-3 bg-[#030712]/50 border border-white/[0.05] rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-sm"
+                      className="block w-full pl-12 pr-4 py-3 bg-white border border-gray-500 rounded-[22px] text-black placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-brand-200 transition-all text-sm"
                       placeholder="John Doe"
                     />
                   </div>
@@ -162,14 +162,14 @@ export default function Signup() {
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="email" className="block text-sm font-medium text-slate-300 ml-1">
+                <label htmlFor="email" className="block text-base font-medium text-black ml-1">
                   Email Address
                 </label>
                 <div className="relative group">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl blur opacity-0 group-focus-within:opacity-20 transition-all duration-300"></div>
+                  <div className="hidden"></div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Mail className="h-5 w-5 text-slate-500 group-focus-within:text-blue-500 transition-colors" />
+                      <Mail className="h-5 w-5 text-black group-focus-within:text-brand-700 transition-colors" />
                     </div>
                     <input
                       id="email"
@@ -178,7 +178,7 @@ export default function Signup() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="block w-full pl-12 pr-4 py-3 bg-[#030712]/50 border border-white/[0.05] rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-sm"
+                      className="block w-full pl-12 pr-4 py-3 bg-white border border-gray-500 rounded-[22px] text-black placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-brand-200 transition-all text-sm"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -186,14 +186,14 @@ export default function Signup() {
               </div>
 
               <div className="space-y-1">
-                <label htmlFor="phone" className="block text-sm font-medium text-slate-300 ml-1">
+                <label htmlFor="phone" className="block text-base font-medium text-black ml-1">
                   Phone Number
                 </label>
                 <div className="relative group">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl blur opacity-0 group-focus-within:opacity-20 transition-all duration-300"></div>
+                  <div className="hidden"></div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Phone className="h-5 w-5 text-slate-500 group-focus-within:text-blue-500 transition-colors" />
+                      <Phone className="h-5 w-5 text-black group-focus-within:text-brand-700 transition-colors" />
                     </div>
                     <input
                       id="phone"
@@ -202,7 +202,7 @@ export default function Signup() {
                       required
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="block w-full pl-12 pr-4 py-3 bg-[#030712]/50 border border-white/[0.05] rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-sm"
+                      className="block w-full pl-12 pr-4 py-3 bg-white border border-gray-500 rounded-[22px] text-black placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-brand-200 transition-all text-sm"
                       placeholder="+91 92413 0060"
                     />
                   </div>
@@ -211,11 +211,11 @@ export default function Signup() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label htmlFor="password" className="block text-sm font-medium text-slate-300 ml-1">
+                  <label htmlFor="password" className="block text-base font-medium text-black ml-1">
                     Password
                   </label>
                   <div className="relative group">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl blur opacity-0 group-focus-within:opacity-20 transition-all duration-300"></div>
+                    <div className="hidden"></div>
                     <div className="relative">
                       <input
                         id="password"
@@ -224,11 +224,11 @@ export default function Signup() {
                         required
                         value={formData.password}
                         onChange={handleInputChange}
-                        className="block w-full px-4 py-3 bg-[#030712]/50 border border-white/[0.05] rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-sm"
+                        className="block w-full px-4 py-3 bg-white border border-gray-500 rounded-[22px] text-black placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-brand-200 transition-all text-sm"
                         placeholder="••••••••"
                       />
                       <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-slate-500">
+                        <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-black">
                           {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                         </button>
                       </div>
@@ -237,11 +237,11 @@ export default function Signup() {
                 </div>
 
                 <div className="space-y-1">
-                  <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-300 ml-1">
+                  <label htmlFor="confirmPassword" className="block text-base font-medium text-black ml-1">
                     Confirm
                   </label>
                   <div className="relative group">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl blur opacity-0 group-focus-within:opacity-20 transition-all duration-300"></div>
+                    <div className="hidden"></div>
                     <div className="relative">
                       <input
                         id="confirmPassword"
@@ -250,11 +250,11 @@ export default function Signup() {
                         required
                         value={formData.confirmPassword}
                         onChange={handleInputChange}
-                        className="block w-full px-4 py-3 bg-[#030712]/50 border border-white/[0.05] rounded-xl text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all text-sm"
+                        className="block w-full px-4 py-3 bg-white border border-gray-500 rounded-[22px] text-black placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-brand-200 transition-all text-sm"
                         placeholder="••••••••"
                       />
                       <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                        <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="text-slate-500">
+                        <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="text-black">
                           {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                         </button>
                       </div>
@@ -269,21 +269,21 @@ export default function Signup() {
                   name="terms"
                   type="checkbox"
                   required
-                  className="h-4 w-4 bg-[#030712] border-white/[0.1] text-blue-600 focus:ring-blue-500/50 rounded"
+                  className="h-4 w-4 bg-white border-gray-200 text-brand-700 focus:ring-brand-200 rounded"
                 />
-                <label htmlFor="terms" className="ml-2 block text-xs text-slate-400">
-                  I agree to the <Link href="/terms" className="text-blue-500 hover:text-blue-400">Terms & Conditions</Link>
+                <label htmlFor="terms" className="ml-2 block text-base text-black">
+                  I agree to the <Link href="/terms" className="text-brand-700 hover:text-brand-700">Terms & Conditions</Link>
                 </label>
               </div>
 
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative w-full flex justify-center py-4 px-4 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:shadow-[0_0_30px_rgba(37,99,235,0.3)] transition-all duration-300 transform hover:-translate-y-0.5"
+                className="group relative w-full flex justify-center py-4 px-4 bg-brand-700 hover:bg-brand-800 text-white text-base font-bold rounded-[10px] transition-all duration-300 transform"
               >
                 {isLoading ? (
                   <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/20 border-t-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-gray-200 mr-2"></div>
                     Creating Account...
                   </div>
                 ) : (
@@ -294,10 +294,10 @@ export default function Signup() {
                 )}
               </button>
 
-              <div className="pt-4 border-t border-white/[0.05] text-center">
-                <p className="text-sm text-slate-500">
+              <div className="pt-4 border-t border-gray-200 text-center">
+                <p className="text-base text-black">
                   Already have an account?{' '}
-                  <Link href="/login" className="font-bold text-blue-500 hover:text-blue-400 transition-colors">
+                  <Link href="/login" className="font-bold text-brand-700 hover:text-brand-700 transition-colors">
                     Sign in here
                   </Link>
                 </p>
@@ -307,7 +307,7 @@ export default function Signup() {
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/" className="text-sm text-slate-500 hover:text-blue-400 font-medium transition-colors flex items-center justify-center group">
+          <Link href="/" className="text-base text-black hover:text-brand-700 font-medium transition-colors flex items-center justify-center group">
             <ArrowRight className="h-4 w-4 mr-2 rotate-180 transform group-hover:-translate-x-1 transition-transform" />
             Back to Home
           </Link>

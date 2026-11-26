@@ -77,28 +77,28 @@ export default function CourseApplicationForm({ courseId, courseName, isOpen, on
   };
 
   return (
-    <div className="fixed inset-0 z-[1000] flex items-start justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto">
-      <div className="relative bg-white rounded-3xl w-full max-w-md shadow-2xl border border-gray-100 animate-zoom-in my-4 flex flex-col">
-        <div className={`p-6 text-white rounded-t-3xl ${type === 'apply' ? 'bg-[#2563EB]' : 'bg-[#1D4ED8]'}`}>
+    <div className="fixed inset-0 z-[1000] flex items-start justify-center p-4 bg-black/60 overflow-y-auto">
+      <div className="relative bg-white rounded-lg w-full max-w-md border border-gray-100 my-4 flex flex-col">
+        <div className={`p-6 text-gray-900 rounded-t-3xl ${type === 'apply' ? 'bg-brand-700' : 'bg-brand-700'}`}>
           <div className="flex justify-between items-center mb-2">
-            <h3 className="text-xl font-black uppercase tracking-tight">
+            <h3 className="text-xl font-bold">
               {type === 'apply' ? 'Enroll Now' : 'Course Enquiry'}
             </h3>
-            <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-xl transition-colors">
+            <button onClick={onClose} className="p-2 hover:bg-gray-50 rounded-lg transition-colors">
               <X className="h-5 w-5" />
             </button>
           </div>
-          <p className="text-blue-100 text-xs font-medium uppercase tracking-widest">{courseName}</p>
+          <p className="text-brand-700 text-base font-medium">{courseName}</p>
         </div>
 
         <div className="p-8 overflow-y-auto max-h-[calc(90vh-130px)]">
           {success ? (
             <div className="text-center py-10 space-y-4">
-              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto animate-bounce">
+              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
                 <CheckCircle className="h-10 w-10" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900">Successfully Sent!</h4>
-              <p className="text-gray-500 text-sm">
+              <h4 className="text-xl font-bold text-brand-900">Successfully Sent!</h4>
+              <p className="text-black text-base">
                 {type === 'apply' 
                   ? 'Your application has been logged. Our admissions team will sync with you shortly.'
                   : 'Your enquiry has been received. A counselor will contact you soon.'}
@@ -107,31 +107,31 @@ export default function CourseApplicationForm({ courseId, courseName, isOpen, on
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               {error && (
-                <div className="bg-red-50 border border-red-100 text-red-600 p-3 rounded-xl flex items-center space-x-2 text-xs font-bold uppercase animate-shake">
+                <div className="bg-red-50 border border-red-100 text-red-600 p-3 rounded-lg flex items-center space-x-2 text-sm font-bold animate-shake">
                   <AlertCircle className="h-4 w-4" />
                   <span>{error}</span>
                 </div>
               )}
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Full Name</label>
+                <label className="text-base font-semibold text-black">Full Name</label>
                 <input
                   required
                   type="text"
                   placeholder="John Doe"
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all text-sm font-medium"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-500 rounded-[22px] focus:ring-2 focus:ring-brand-600 focus:bg-white outline-none transition-all text-sm font-medium"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Email Address</label>
+                <label className="text-base font-semibold text-black">Email Address</label>
                 <input
                   required
                   type="email"
                   placeholder="john@example.com"
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all text-sm font-medium"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-500 rounded-[22px] focus:ring-2 focus:ring-brand-600 focus:bg-white outline-none transition-all text-sm font-medium"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -140,24 +140,24 @@ export default function CourseApplicationForm({ courseId, courseName, isOpen, on
               {type === 'apply' && (
                 <>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Phone Number</label>
+                    <label className="text-base font-semibold text-black">Phone Number</label>
                     <input
                       required
                       type="tel"
                       placeholder="+91 00000 00000"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all text-sm font-medium"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-500 rounded-[22px] focus:ring-2 focus:ring-brand-600 focus:bg-white outline-none transition-all text-sm font-medium"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Choose Password</label>
+                    <label className="text-base font-semibold text-black">Choose Password</label>
                     <input
                       required
                       type="password"
                       placeholder="••••••••"
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white outline-none transition-all text-sm font-medium"
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-500 rounded-[22px] focus:ring-2 focus:ring-brand-600 focus:bg-white outline-none transition-all text-sm font-medium"
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                     />
@@ -168,14 +168,14 @@ export default function CourseApplicationForm({ courseId, courseName, isOpen, on
               <button
                 disabled={loading}
                 type="submit"
-                className={`w-full py-4 rounded-2xl text-white font-black uppercase tracking-widest text-xs transition-all flex items-center justify-center space-x-2 ${
-                  loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#2563EB] hover:bg-[#1D4ED8] hover:shadow-xl'
+                className={`w-full py-4 rounded-lg text-gray-900 font-bold text-base transition-all flex items-center justify-center space-x-2 ${
+                  loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-brand-700 hover:bg-brand-700'
                 }`}
               >
                 <span>{loading ? 'Processing...' : type === 'apply' ? 'Submit Application' : 'Send Enquiry'}</span>
               </button>
 
-              <div className="pt-2 flex items-center justify-center space-x-2 text-[9px] font-black text-gray-400 uppercase">
+              <div className="pt-2 flex items-center justify-center space-x-2 text-sm font-bold text-black">
                 <Shield className="h-3 w-3" />
                 <span>Secure SSL Encryption Protocol Active</span>
               </div>

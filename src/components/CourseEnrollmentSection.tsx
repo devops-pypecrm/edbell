@@ -23,13 +23,13 @@ export default function CourseEnrollmentSection({ courseId, courseName }: Course
       <div className="flex flex-col sm:flex-row gap-2">
         <button 
           onClick={() => openModal('apply')}
-          className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-black py-2 px-4 rounded-lg transition-all duration-300 text-xs uppercase tracking-widest shadow-lg hover:shadow-yellow-500/20 transform hover:-translate-y-0.5"
+          className="bg-yellow-500 hover:bg-yellow-600 text-brand-700 font-bold py-2 px-4 rounded-lg transition-all duration-300 text-base transform"
         >
           Apply Now
         </button>
         <button 
           onClick={() => openModal('enquiry')}
-          className="bg-white/10 hover:bg-white/20 text-white font-black py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center text-xs uppercase tracking-widest border border-white/10 backdrop-blur-sm shadow-lg hover:shadow-blue-500/20 transform hover:-translate-y-0.5"
+          className="bg-gray-50 hover:bg-gray-50 text-gray-900 font-bold py-2 px-4 rounded-lg transition-all duration-300 flex items-center justify-center text-base border border-gray-200 transform"
         >
           Enquire Now
         </button>

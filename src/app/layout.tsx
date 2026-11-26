@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Poppins, Chakra_Petch } from 'next/font/google';
 import './globals.css';
 import ConditionalLayout from '@/components/ConditionalLayout';
 
-const inter = Inter({ subsets: ['latin'] });
+const body = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-body' });
+const heading = Chakra_Petch({ subsets: ['latin'], weight: ['500', '600', '700'], variable: '--font-heading' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://edbelledusolutions.com'),
@@ -127,7 +128,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/edbell-logo.jpg?v=1.1" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={inter.className}>
+      <body className={`${body.variable} ${heading.variable} ${body.className}`}>
         <ConditionalLayout>
           {children}
         </ConditionalLayout>

@@ -180,46 +180,46 @@ export default function Services() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] selection:bg-blue-500/30 overflow-hidden">
+    <div className="min-h-screen bg-[var(--bg-primary)] overflow-hidden">
       {/* Hero Section */}
-      <section className="relative pt-24 sm:pt-28 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-12 overflow-hidden border-b border-[var(--border)]">
-        <div className="absolute inset-0 z-0">
+      <section className="relative pb-16 lg:pb-20">
+        <div className="hidden">
           <img
             src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80"
             alt="Students Collaborating Backdrop"
-            className="w-full h-full object-cover opacity-20 filter contrast-125 brightness-50"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-[var(--bg-primary)]/50 to-[var(--bg-primary)]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+          <div className="absolute inset-0 bg-transparent"></div>
+          <div className="hidden"></div>
         </div>
 
-        <div className="relative z-10 max-w-[1700px] mx-auto flex flex-col items-center text-center space-y-6 sm:space-y-8">
-          <div className={`space-y-5 sm:space-y-6 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <div className="inline-flex items-center space-x-2 text-[9px] sm:text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">
-              <Cpu className="h-3.5 w-3.5 animate-pulse" />
+        <div className="max-w-[1300px] mx-auto px-5">
+          <div className={`pt-14 pb-2 flex flex-col items-center text-center gap-4 ${mounted ? '' : ''}`}>
+            <div className="flex items-center gap-2 text-lg lg:text-[22px] font-semibold text-black">
+              <Cpu className="hidden" />
               <span>Service Execution Matrix</span>
             </div>
 
-            <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--text-heading)] leading-[0.8] tracking-tighter uppercase not-italic font-serif ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}>
+            <h1 className={`text-[42px] lg:text-[60px] leading-none font-bold text-brand-900 ${mounted ? '' : ''}`}>
               Structural <br />
-              <span className="text-transparent bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--highlight)] bg-clip-text">Execution</span>
+              <span className="text-brand-900">Execution</span>
             </h1>
 
-            <p className={`text-sm sm:text-base lg:text-lg text-[var(--text-primary)] font-light max-w-xl mx-auto leading-relaxed ${mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'}`}>
+            <p className={`text-[17px] text-black max-w-3xl mx-auto ${mounted ? '' : ''}`}>
               Activating high-performance modules for global educational excellence. Every protocol is optimized for your precise academic trajectory.
             </p>
           </div>
 
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-[var(--border)] to-transparent my-8 sm:my-10"></div>
+          <div className="hidden"></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 w-full pt-4 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full pt-10 items-start">
             {/* Left: Tactical Selector */}
-            <div className="lg:col-span-5 space-y-3 animate-slide-right animation-delay-200">
-              <div className="p-3 bg-[var(--surface)]/40 border border-[var(--border)] rounded-xl mb-4">
-                <p className="text-[8px] sm:text-[9px] font-black text-[var(--text-muted)] uppercase tracking-widest mb-1.5">Protocol_Select</p>
+            <div className="lg:col-span-5 space-y-0.5">
+              <div className="hidden">
+                <p className="text-base font-semibold text-[var(--text-muted)] mb-1.5">Protocol_Select</p>
                 <div className="h-1 w-full bg-[var(--bg-primary)] rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-[var(--primary)] transition-all duration-700"
+                    className="h-full bg-brand-700 transition-all duration-700"
                     style={{ width: `${((activeService + 1) / displayingServices.length) * 100}%` }}
                   ></div>
                 </div>
@@ -229,18 +229,18 @@ export default function Services() {
                   key={i}
                   onMouseEnter={() => setActiveService(i)}
                   onClick={() => setActiveService(i)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-500 border ${activeService === i
-                    ? 'bg-[var(--primary)] border-[var(--primary-light)]/40 shadow-[0_0_30px_rgba(59,130,246,0.3)] lg:translate-x-2'
-                    : 'bg-[var(--surface)]/40 border-[var(--border)] hover:bg-[var(--surface-alt)]/60 grayscale opacity-50'
+                  className={`w-full text-left px-4 py-4 rounded transition-colors border border-gray-300 ${activeService === i
+                    ? 'bg-brand-900 border-brand-900'
+                    : 'bg-white hover:bg-brand-50'
                     }`}
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className={`text-[8px] sm:text-[9px] font-black uppercase tracking-[0.3em] mb-1 ${activeService === i ? 'text-blue-100' : 'text-[var(--text-muted)]'}`}>{s.serviceId}</p>
-                      <h3 className={`text-base sm:text-lg lg:text-xl font-black uppercase tracking-tight ${activeService === i ? 'text-white' : 'text-[var(--text-primary)]'}`}>{s.title}</h3>
+                      <p className={`hidden${activeService === i ? '' : ''}`}>{s.serviceId}</p>
+                      <h3 className={`!font-sans text-[17px] font-semibold ${activeService === i ? 'text-white' : 'text-black'}`}>{s.title}</h3>
                     </div>
-                    <div className={`${activeService === i ? 'text-white' : 'text-[var(--text-muted)]'}`}>
-                      <ArrowRight className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-500 ${activeService === i ? 'translate-x-0' : '-translate-x-2'}`} />
+                    <div className={`${activeService === i ? 'text-white' : 'text-black'}`}>
+                      <ArrowRight className={`h-5 w-5 ${activeService === i ? '' : ''}`} />
                     </div>
                   </div>
                 </button>
@@ -248,41 +248,41 @@ export default function Services() {
             </div>
 
             {/* Right: Operational Data */}
-            <div className="lg:col-span-7 animate-slide-left animation-delay-400">
+            <div className="lg:col-span-7">
               {displayingServices[activeService] && (
-                <div className={`relative p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-gradient-to-br ${displayingServices[activeService].gradient} border border-white/10 overflow-hidden group min-h-[350px] sm:min-h-[400px] lg:min-h-[450px] flex flex-col justify-between shadow-2xl shadow-blue-900/40`}>
-                  <div className="absolute top-0 right-0 p-6 sm:p-8 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+                <div className={`sk-card p-6 sm:p-10 ${displayingServices[activeService].gradient} flex flex-col justify-between`}>
+                  <div className="hidden">
                     <DynamicIcon name={displayingServices[activeService].icon} className="h-24 w-24" />
                   </div>
 
-                  <div className="space-y-5 sm:space-y-6 relative z-10">
+                  <div className="space-y-8 relative z-10">
                     <div className="space-y-3">
-                      <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white uppercase tracking-tighter leading-none">{displayingServices[activeService].title}</h4>
-                      <p className="text-sm sm:text-base lg:text-lg text-white/90 font-light leading-relaxed max-w-xl">
+                      <h4 className="font-heading inline-block bg-brand-200 rounded-[20px] px-8 py-6 text-2xl lg:text-3xl font-semibold text-brand-900">{displayingServices[activeService].title}</h4>
+                      <p className="text-[17px] text-black leading-relaxed">
                         {displayingServices[activeService].description}
                       </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 relative">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 relative">
                       {displayingServices[activeService].features.map((f, idx) => (
                         <div key={idx} className="relative group/feature">
                           <button 
                             onClick={() => setActiveFeature(activeFeature?.featureIdx === idx ? null : {serviceIdx: activeService, featureIdx: idx})}
-                            className={`w-full flex items-center space-x-3 p-3 sm:p-4 bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl border transition-all ${activeFeature?.featureIdx === idx ? 'border-white/40 bg-white/30' : 'border-white/10 hover:bg-white/20'}`}
+                            className={`w-full flex items-center gap-3 px-4 py-3 border rounded-[15px] transition-colors ${activeFeature?.featureIdx === idx ? 'border-brand-700 bg-brand-50' : 'border-brand-900 hover:bg-brand-50'}`}
                           >
-                            <CheckCircle className={`h-4 w-4 flex-shrink-0 transition-colors ${activeFeature?.featureIdx === idx ? 'text-white' : 'text-white/70'}`} />
-                            <span className="text-xs sm:text-sm font-black text-white uppercase tracking-wider text-left">{f.name}</span>
+                            <CheckCircle className={`h-5 w-5 flex-shrink-0 text-brand-700 ${activeFeature?.featureIdx === idx ? '' : ''}`} />
+                            <span className="text-base font-semibold text-brand-900 text-left">{f.name}</span>
                           </button>
                           
                           {activeFeature?.serviceIdx === activeService && activeFeature?.featureIdx === idx && (
-                            <div className="absolute top-full left-0 right-0 mt-2 z-[60] animate-fade-in-up">
-                              <div className="bg-white p-4 rounded-xl shadow-2xl border border-blue-100 relative">
-                                <div className="absolute -top-1.5 left-6 w-3 h-3 bg-white rotate-45"></div>
-                                <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1.5 flex items-center">
-                                  <Sparkles className="h-3 w-3 mr-1" />
+                            <div className="absolute top-full left-0 right-0 mt-2 z-[60]">
+                              <div className="bg-white p-5 rounded-[15px] border border-brand-900 shadow-lg relative">
+                                <div className="hidden"></div>
+                                <p className="font-heading text-lg font-semibold text-brand-900 mb-1">
+                                  <Sparkles className="hidden" />
                                   Execution Detail
                                 </p>
-                                <p className="text-xs text-slate-700 font-medium leading-relaxed">
+                                <p className="text-base text-black">
                                   {f.details}
                                 </p>
                               </div>
@@ -293,18 +293,18 @@ export default function Services() {
                     </div>
                   </div>
 
-                  <div className="flex items-end justify-between relative z-10 pt-6 sm:pt-8">
-                    <div className="flex space-x-6 sm:space-x-8">
+                  <div className="flex items-end justify-between relative z-10 pt-8">
+                    <div className="flex gap-10">
                       <div>
-                        <p className="text-[8px] sm:text-[9px] font-black text-white/60 uppercase tracking-widest mb-0.5">Success_Rate</p>
-                        <p className="text-xl sm:text-2xl lg:text-3xl font-black text-white">{displayingServices[activeService].stats.success}</p>
+                        <p className="text-base sk-role">Success_Rate</p>
+                        <p className="font-heading text-3xl font-bold text-brand-900">{displayingServices[activeService].stats.success}</p>
                       </div>
                       <div>
-                        <p className="text-[8px] sm:text-[9px] font-black text-white/60 uppercase tracking-widest mb-0.5">Execution_Speed</p>
-                        <p className="text-xl sm:text-2xl lg:text-3xl font-black text-white">{displayingServices[activeService].stats.speed}</p>
+                        <p className="text-base sk-role">Execution_Speed</p>
+                        <p className="font-heading text-3xl font-bold text-brand-900">{displayingServices[activeService].stats.speed}</p>
                       </div>
                     </div>
-                    <Link href="/contact" className="hidden sm:flex h-12 w-12 lg:h-14 lg:w-14 bg-white rounded-full items-center justify-center text-[var(--bg-primary)] hover:scale-110 transition-transform shadow-2xl">
+                    <Link href="/contact" className="hidden sm:flex h-12 w-12 bg-brand-900 rounded-full items-center justify-center text-white hover:bg-brand-700">
                       <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6" />
                     </Link>
                   </div>
@@ -316,17 +316,17 @@ export default function Services() {
       </section>
 
       {/* Auxiliary Support */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[var(--bg-secondary)]">
-        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 space-y-12 sm:space-y-16">
-          <div className="flex flex-col lg:flex-row items-end justify-between gap-6">
-            <div className="space-y-2">
-              <p className="text-[9px] sm:text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.3em]">Integrated Nodes</p>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-[var(--text-heading)] uppercase tracking-tighter">Auxiliary Support</h2>
+      <section className="py-16 lg:py-20 sk-white">
+        <div className="max-w-[1300px] mx-auto px-5 space-y-10">
+          <div className="text-center space-y-3">
+            <div className="">
+              <p className="text-lg lg:text-[22px] font-semibold text-black">Integrated Nodes</p>
+              <h2 className="text-3xl lg:text-[45px] lg:leading-tight font-bold text-black">Auxiliary Support</h2>
             </div>
-            <p className="text-sm sm:text-base text-[var(--text-secondary)] max-w-sm">Secondary infrastructure nodes ensuring complete operational coverage for all student parameters.</p>
+            <p className="text-[17px] text-black max-w-3xl mx-auto ">Secondary infrastructure nodes ensuring complete operational coverage for all student parameters.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[
               { title: "Admission Support", icon: <UserCheck className="w-5 h-5" />, desc: "Complete assistance for university admissions and institutional enrollment." },
               { title: "Career Guidance", icon: <Sparkles className="w-5 h-5" />, desc: "Expert assessment and trajectory mapping for students (Free of cost)." },
@@ -335,20 +335,20 @@ export default function Services() {
               { title: "Arrival Protocols", icon: <Globe className="w-5 h-5" />, desc: "Pre-departure coordination and landing logistics." },
               { title: "Node Networking", icon: <Users className="w-5 h-5" />, desc: "Connecting students with verified alumni clusters." }
             ].map((item, i) => (
-              <div key={i} className="p-5 sm:p-6 lg:p-7 bg-[var(--surface)]/40 border border-[var(--border)] rounded-2xl sm:rounded-3xl hover:bg-[var(--surface-alt)]/60 transition-all group">
-                <div className="w-10 h-10 bg-[var(--primary)]/10 border border-[var(--primary)]/20 rounded-xl flex items-center justify-center text-[var(--primary)] mb-4 sm:mb-5 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
+              <div key={i} className="sk-card p-8 text-center">
+                <div className="w-[60px] h-[60px] mx-auto mb-5 bg-brand-900 text-white flex items-center justify-center">
                   {item.icon}
                 </div>
-                <h4 className="text-base sm:text-lg font-black text-[var(--text-heading)] uppercase mb-2 tracking-tight">{item.title}</h4>
-                <p className="text-xs sm:text-sm text-[var(--text-primary)] leading-relaxed">{item.desc}</p>
+                <h4 className="font-heading text-[22px] font-semibold text-brand-900 mb-2">{item.title}</h4>
+                <p className="text-base text-black">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 bg-[var(--bg-primary)] border-t border-[var(--border)]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <section className="py-12 sm:py-16 ">
+        <div className="max-w-[1300px] mx-auto px-5">
           <Newsletter />
         </div>
       </section>

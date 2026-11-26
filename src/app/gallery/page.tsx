@@ -141,42 +141,42 @@ export default function Gallery() {
     : displayImages.filter(img => img.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] selection:bg-blue-500/30">
+    <div className="min-h-screen bg-[var(--bg-primary)]">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center pt-20 sm:pt-24 overflow-hidden px-4 sm:px-6 lg:px-12">
-        <div className="absolute inset-0 z-0">
+      <section className="relative">
+        <div className="hidden">
           <img
             src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80"
             alt="Graduation Ceremony Backdrop"
-            className="w-full h-full object-cover opacity-20 filter contrast-125 brightness-50"
+            className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_70%)]"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className={`lg:col-span-6 space-y-6 sm:space-y-8 ${mounted ? 'animate-fade-in' : 'opacity-0'}`}>
-            <div className="inline-flex items-center space-x-2 text-[9px] sm:text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">
-              <Camera className="h-3.5 w-3.5" />
+        <div className="max-w-[1300px] mx-auto px-5 pt-14 w-full">
+          <div className={`text-center flex flex-col items-center gap-4 ${mounted ? '' : ''}`}>
+            <div className="flex items-center gap-2 text-lg lg:text-[22px] font-semibold text-black">
+              <Camera className="hidden" />
               <span>Campus Life & Events</span>
             </div>
-            <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-black text-[var(--text-heading)] leading-[0.85] tracking-tighter uppercase not-italic font-serif ${mounted ? 'animate-fade-in' : 'opacity-0'}`}>
+            <h1 className={`text-[42px] lg:text-[60px] leading-none font-bold text-brand-900 ${mounted ? '' : ''}`}>
               Edbell <br />
-              <span className="text-transparent bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--highlight)] bg-clip-text">Visual Gallery</span>
+              <span className="text-brand-900">Visual Gallery</span>
             </h1>
-            <p className={`text-sm sm:text-base text-[var(--text-primary)] font-light leading-relaxed max-w-lg ${mounted ? 'animate-fade-in' : 'opacity-0'}`}>
+            <p className={`text-[17px] text-black max-w-3xl mx-auto ${mounted ? '' : ''}`}>
               Explore the vibrant life at EdBell through our curated visual repository, showcasing our modern facilities, graduation successes, and student engagement across Kerala.
             </p>
           </div>
 
-          <div className="lg:col-span-6 relative">
-            <div className="absolute inset-0 bg-blue-500/15 blur-[100px] rounded-full"></div>
-            <div className="relative grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="mt-10">
+            <div className="hidden"></div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
               {displayImages.slice(0, 4).map((img, i) => (
-                <div key={i} className="h-40 sm:h-52 lg:h-60 rounded-2xl sm:rounded-3xl overflow-hidden border border-[var(--primary)]/20 shadow-xl cursor-pointer group">
+                <div key={i} className="sk-shot h-40 lg:h-56 cursor-pointer">
                   <img
                     src={img.imageUrl}
                     alt={img.imageAlt}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     decoding="async"
                   />
@@ -188,18 +188,18 @@ export default function Gallery() {
       </section>
 
       {/* Category Filter */}
-      <section className="relative z-30 py-4 sm:py-6 bg-[var(--bg-secondary)] border-b border-[var(--border)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-wrap gap-2 sm:gap-3 justify-center">
+      <section className="py-8">
+        <div className="max-w-[1300px] mx-auto px-5 flex flex-wrap gap-2 justify-center">
           {categories.map((c) => (
             <button
               key={c.id}
               onClick={() => setSelectedCategory(c.id)}
-              className={`flex items-center space-x-2 sm:space-x-3 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[8px] sm:text-[9px] font-black uppercase tracking-[0.15em] transition-all relative overflow-hidden group ${selectedCategory === c.id
-                ? 'bg-[var(--primary)] text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] scale-105'
-                : 'bg-[var(--primary)]/10 border border-[var(--border)] text-[var(--text-primary)] hover:text-white hover:border-[var(--primary)]/50'
+              className={`flex items-center gap-2 px-5 py-2 text-[15px] font-semibold border rounded-[15px] transition-colors ${selectedCategory === c.id
+                ? 'border-brand-900 bg-brand-900 text-white'
+                : 'border-brand-900 text-brand-900 bg-white hover:bg-brand-50'
                 }`}
             >
-              <c.icon className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${selectedCategory === c.id ? 'animate-pulse' : ''}`} />
+              <c.icon className={`h-4 w-4 ${selectedCategory === c.id ? '' : ''}`} />
               <span>{c.name}</span>
             </button>
           ))}
@@ -207,16 +207,16 @@ export default function Gallery() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-16 sm:py-20 bg-[#050B14]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <section className="pb-16">
+        <div className="max-w-[1300px] mx-auto px-5">
           {loading ? (
-            <div className="text-center py-20">
-              <Zap className="h-12 w-12 text-[var(--primary)] mx-auto mb-4 animate-pulse" />
-              <p className="text-[var(--text-primary)]">Loading gallery...</p>
+            <div className="text-center py-16">
+              <Zap className="hidden" />
+              <p className="text-lg text-black">Loading gallery...</p>
             </div>
           ) : displayFiltered.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-[var(--text-primary)]">No images found in this category.</p>
+            <div className="text-center py-16">
+              <p className="text-lg text-black">No images found in this category.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -224,30 +224,30 @@ export default function Gallery() {
                 <div
                   key={img._id || i}
                   onClick={() => setSelectedImage(img)}
-                  className="group relative h-64 sm:h-80 lg:h-96 rounded-2xl sm:rounded-3xl overflow-hidden bg-[var(--bg-primary)] border border-[var(--border)] cursor-pointer hover:border-[var(--primary)]/50 transition-all duration-700 shadow-xl"
+                  className="sk-card p-2.5 pb-5 cursor-pointer"
                 >
-                  <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20 bg-[var(--primary)] px-3 py-1.5 rounded-lg text-[8px] sm:text-[9px] font-black text-white uppercase tracking-widest shadow-xl">
+                  <div className="hidden">
                     {img.category.toUpperCase()}
                   </div>
 
                   <img
                     src={img.imageUrl}
                     alt={img.imageAlt}
-                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                    className="w-full aspect-[4/3] object-cover sk-photo"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent opacity-90"></div>
-                  <div className="absolute inset-0 bg-[var(--primary)]/5 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <div className="hidden"></div>
+                  <div className="hidden"></div>
 
-                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 space-y-2 transition-transform duration-700">
-                    <span className="text-[8px] sm:text-[9px] font-black text-[var(--primary)] uppercase tracking-[0.2em]">{img.category} // {img.location || 'EdBell'}</span>
-                    <h3 className="text-lg sm:text-xl font-black text-[var(--text-heading)] uppercase tracking-tighter leading-none">{img.title}</h3>
-                    <p className="text-xs font-light text-[var(--text-primary)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 leading-relaxed">
+                  <div className="px-3 pt-4 space-y-1">
+                    <span className="text-sm sk-role">{img.category} // {img.location || 'EdBell'}</span>
+                    <h3 className="text-xl font-semibold text-brand-900">{img.title}</h3>
+                    <p className="text-base text-black">
                       {img.description}
                     </p>
-                    <div className="pt-2 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200">
-                      <span className="text-[8px] sm:text-[9px] font-black text-[var(--text-muted)] uppercase italic">{img.eventDate || new Date().toISOString().split('T')[0]}</span>
-                      <div className="w-9 h-9 rounded-xl bg-[var(--primary)]/20 flex items-center justify-center text-[var(--primary)] backdrop-blur-3xl border border-[var(--primary)]/30">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-black">{img.eventDate || new Date().toISOString().split('T')[0]}</span>
+                      <div className="hidden">
                         <Eye className="h-4 w-4" />
                       </div>
                     </div>
@@ -260,59 +260,59 @@ export default function Gallery() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 sm:py-20 lg:py-24 relative px-4 sm:px-6 overflow-hidden bg-gradient-to-b from-[var(--bg-secondary)] to-[var(--bg-primary)]">
-        <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
-          <Zap className="h-12 w-12 sm:h-14 sm:w-14 text-[var(--primary)] mx-auto animate-pulse" />
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[var(--text-heading)] tracking-tighter leading-[0.8] uppercase italic">
+      <section className="py-16 lg:py-20 sk-mint">
+        <div className="max-w-[1300px] mx-auto px-5 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <Zap className="hidden" />
+          <h2 className="text-3xl lg:text-[45px] lg:leading-tight font-bold text-brand-900">
             Join the <br />
-            <span className="text-transparent bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--highlight)] bg-clip-text">Ecosystem</span>
+            <span className="text-brand-900">Ecosystem</span>
           </h2>
-          <Link href="/contact" className="inline-block px-8 sm:px-10 py-4 sm:py-5 bg-[var(--primary)] rounded-2xl text-white font-black text-base sm:text-lg uppercase tracking-widest hover:shadow-[0_0_80px_rgba(59,130,246,0.5)] transition-all transform hover:-translate-y-1">
+          <Link href="/contact" className="inline-flex items-center justify-center px-10 py-3 bg-brand-700 rounded-[10px] text-white text-[15px] font-semibold hover:bg-brand-900 transition-colors">
             Deploy Now
           </Link>
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 bg-[var(--bg-primary)] border-t border-[var(--border)]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <section className="py-12 sm:py-16 ">
+        <div className="max-w-[1300px] mx-auto px-5">
           <Newsletter />
         </div>
       </section>
 
       {/* Lightbox */}
       {selectedImage && (
-        <div className="fixed inset-0 z-[1000] flex items-start justify-center p-4 sm:p-6 lg:p-10 animate-fade-in overflow-y-auto" onClick={() => setSelectedImage(null)}>
-          <div className="absolute inset-0 bg-[var(--bg-primary)]/95 backdrop-blur-[40px]"></div>
-          <div className="relative max-w-5xl w-full bg-[var(--bg-secondary)] rounded-2xl sm:rounded-3xl border border-[var(--border)] shadow-2xl flex flex-col lg:flex-row my-auto" onClick={e => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[1000] flex items-start justify-center p-4 sm:p-6 lg:p-10 overflow-y-auto" onClick={() => setSelectedImage(null)}>
+          <div className="absolute inset-0 bg-black/80"></div>
+          <div className="relative max-w-5xl w-full bg-white rounded-md flex flex-col lg:flex-row my-auto overflow-hidden" onClick={e => e.stopPropagation()}>
             <div className="lg:w-2/3 h-[40vh] sm:h-[50vh] lg:h-[70vh] relative group">
               <img
                 src={selectedImage.imageUrl}
                 alt={selectedImage.imageAlt}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                className="w-full h-full object-contain bg-gray-100"
               />
             </div>
-            <div className="lg:w-1/3 p-6 sm:p-8 lg:p-10 flex flex-col justify-between bg-[var(--surface)]/40 backdrop-blur-3xl border-l border-[var(--border)] overflow-y-auto">
+            <div className="sk-card lg:w-1/3 p-6 sm:p-8 lg:p-10 flex flex-col justify-between overflow-y-auto">
               <div className="space-y-6">
-                <button onClick={() => setSelectedImage(null)} className="p-3 bg-[var(--primary)]/10 border border-[var(--border)] rounded-xl text-[var(--primary)] hover:text-white hover:bg-[var(--primary)] transition-all">
+                <button onClick={() => setSelectedImage(null)} className="p-3 rounded text-gray-900 hover:bg-gray-100">
                   <X className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 <div className="space-y-3">
-                  <span className="text-[8px] sm:text-[9px] font-black text-[var(--primary)] uppercase tracking-[0.3em]">{selectedImage.category} Protocol</span>
-                  <h3 className="text-xl sm:text-2xl font-black text-[var(--text-heading)] uppercase tracking-tighter leading-none">{selectedImage.title}</h3>
-                  <div className="flex items-center space-x-3 text-[8px] sm:text-[9px] font-black text-[var(--text-muted)] uppercase">
-                    <MapPin className="h-3 w-3 text-[var(--primary)]" />
+                  <span className="text-base font-semibold text-brand-700">{selectedImage.category} Protocol</span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-heading)] leading-tight">{selectedImage.title}</h3>
+                  <div className="flex items-center space-x-3 text-sm font-bold text-[var(--text-muted)]">
+                    <MapPin className="h-3 w-3 text-brand-700" />
                     <span>{selectedImage.location || 'EdBell'}</span>
-                    <span className="text-[var(--primary)]/30">|</span>
-                    <Calendar className="h-3 w-3 text-[var(--primary)]" />
+                    <span className="text-brand-700">|</span>
+                    <Calendar className="h-3 w-3 text-brand-700" />
                     <span>{selectedImage.eventDate || new Date().toISOString().split('T')[0]}</span>
                   </div>
                 </div>
-                <p className="text-sm sm:text-base text-[var(--text-primary)] font-light leading-relaxed">{selectedImage.description}</p>
+                <p className="text-base sm:text-base text-[var(--text-primary)] font-normal leading-relaxed">{selectedImage.description}</p>
               </div>
               <div className="pt-6">
                 <button 
                   onClick={() => setSelectedImage(null)}
-                  className="w-full py-4 sm:py-5 bg-[var(--primary)] rounded-2xl flex items-center justify-center space-x-3 text-white font-black uppercase text-[10px] sm:text-xs tracking-widest hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all transform hover:-translate-y-1"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-700 rounded-[10px] text-white font-semibold hover:bg-brand-800 transition-colors w-full gap-2"
                 >
                   <ArrowRight className="h-4 w-4" />
                   <span>Return to Repository</span>

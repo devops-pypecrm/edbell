@@ -113,34 +113,34 @@ export default function Center() {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] selection:bg-blue-500/30 overflow-hidden">
+    <div className="min-h-screen bg-[var(--bg-primary)] overflow-hidden">
       {/* Hero Section - About style */}
-      <section className="relative min-h-[70vh] sm:min-h-[80vh] flex items-center justify-center pt-16 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative">
+        <div className="hidden">
           <img
             src="https://images.unsplash.com/photo-1524178232457-3bb2449b382a?auto=format&fit=crop&q=80"
             alt="Center Backdrop"
-            className="w-full h-full object-cover opacity-20 filter contrast-125 brightness-50"
+            className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-[var(--bg-primary)]/50 to-[var(--bg-primary)]"></div>
-          <div className="absolute inset-0 bg-white/5 backdrop-blur-[2px]"></div>
+          <div className="absolute inset-0 bg-transparent"></div>
+          <div className="absolute inset-0 bg-white/5"></div>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto w-full text-center space-y-8">
-          <div className={`space-y-6 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
-            <div className="inline-flex items-center space-x-3 bg-[var(--surface)]/40 border border-[var(--border)] rounded-full px-4 py-1.5 backdrop-blur-3xl mx-auto">
-              <Building2 className="h-4 w-4 sm:h-5 sm:w-5 text-[var(--primary)]" />
-              <span className="text-[8px] sm:text-[9px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">Our Physical Locations</span>
+        <div className="max-w-[1300px] mx-auto px-5 pt-14 pb-8 w-full text-center flex flex-col items-center space-y-5">
+          <div className={`space-y-5 flex flex-col items-center ${mounted ? '' : ''}`}>
+            <div className="flex items-center justify-center text-lg lg:text-[22px] font-semibold text-black">
+              <Building2 className="hidden" />
+              <span className="text-lg lg:text-[22px] font-semibold text-black">Our Physical Locations</span>
             </div>
 
-            <div className="space-y-4">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-[var(--text-heading)] leading-[0.85] tracking-tighter uppercase font-serif">
+            <div className="space-y-5 flex flex-col items-center ">
+              <h1 className="text-[42px] lg:text-[60px] leading-none font-bold text-brand-900 ">
                 Edbell <br />
-                <span className="text-transparent bg-gradient-to-r from-[var(--primary)] via-[var(--accent)] to-[var(--highlight)] bg-clip-text">
+                <span className="text-brand-900">
                   Study Centers
                 </span>
               </h1>
-              <p className="text-sm sm:text-base lg:text-lg text-[var(--text-primary)] font-light max-w-2xl mx-auto leading-relaxed">
+              <p className="text-[17px] text-black max-w-3xl ">
                 EdBell Study Centers serve as the physical backbone of our educational ecosystem. Our strategically located centers across Kerala provide students with dedicated learning spaces, high-speed access, and personalized academic support.
               </p>
             </div>
@@ -149,35 +149,35 @@ export default function Center() {
       </section>
 
       {/* Corporate Nodes - The 3 Photos Section */}
-      <section className="py-20 lg:py-28 bg-[var(--bg-secondary)] relative border-y border-[var(--border)]">
-        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 space-y-16">
-          <div className="flex flex-col lg:flex-row items-end justify-between gap-6">
+      <section className="py-16 lg:py-20">
+        <div className="max-w-[1300px] mx-auto px-5 space-y-10">
+          <div className="text-center">
             <div className="space-y-2">
-              <p className="text-[9px] sm:text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.3em]">Institutional_Council</p>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-[var(--text-heading)] uppercase tracking-tighter">Our Leadership Team</h2>
+              <p className="text-lg lg:text-[22px] font-semibold text-black">Institutional_Council</p>
+              <h2 className="text-3xl lg:text-[45px] lg:leading-tight font-bold text-black">Our Leadership Team</h2>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {Center.map((centre, i) => (
-              <div key={i} className="group relative flex flex-col space-y-6">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-[var(--border)] shadow-2xl">
-                  <div className="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-colors z-10"></div>
+              <div key={i} className="sk-card sk-person p-2.5">
+                <div className="aspect-[4/3] sk-photo">
+                  <div className="hidden"></div>
                   <img
                     src={centre.image}
                     alt={centre.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
                 
-                <div className="space-y-4 px-2 text-center">
+                <div className="px-3 pt-4 pb-2">
                   {centre.manager && (
-                    <div className="space-y-3">
-                       <h3 className="text-2xl lg:text-3xl xl:text-4xl font-black text-[var(--text-heading)] uppercase tracking-tighter italic font-serif">
+                    <div className="">
+                       <h3 className="text-xl font-semibold text-brand-900">
                          {centre.manager.name}
                        </h3>
-                       <div className="inline-flex items-center space-x-2 bg-[var(--primary)]/10 border border-[var(--primary)]/20 rounded-full px-4 py-1.5 backdrop-blur-3xl">
-                         <span className="text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.3em]">{centre.manager.position}</span>
+                       <div className="">
+                         <span className="text-base sk-role">{centre.manager.position}</span>
                        </div>
                     </div>
                   )}
@@ -189,39 +189,39 @@ export default function Center() {
       </section>
 
       {/* Growth Architecture section */}
-      <section className="py-20 lg:py-28 bg-[var(--bg-primary)] overflow-hidden">
-        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12 space-y-16">
-          <div className="text-center space-y-4">
-            <div className="inline-flex items-center space-x-3 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 backdrop-blur-3xl mx-auto">
-                <TrendingUp className="h-4 w-4 text-[var(--primary)]" />
-                <span className="text-[9px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">Chronological_Roadmap</span>
+      <section className="py-16 lg:py-20 sk-navy">
+        <div className="max-w-[1300px] mx-auto px-5 space-y-10">
+          <div className="text-center space-y-2">
+            <div className="">
+                <TrendingUp className="hidden" />
+                <span className="text-lg lg:text-[22px] font-semibold text-brand-300">Chronological_Roadmap</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--text-heading)] uppercase tracking-tighter leading-none">Growth Architecture</h2>
+            <h2 className="text-3xl lg:text-[45px] lg:leading-tight font-bold text-white">Growth Architecture</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Background Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-px bg-white/5 hidden lg:block -translate-y-1/2"></div>
+            <div className="hidden"></div>
             
             {growthArchitecture.map((phase, i) => (
               <div 
                 key={i} 
-                className={`group relative p-8 bg-[var(--surface)]/40 border border-[var(--border)] rounded-[40px] hover:bg-[var(--surface-alt)]/60 transition-all duration-700 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}
+                className={`sk-card p-6 ${mounted ? '' : ''}`}
                 style={{ animationDelay: `${i * 150}ms` }}
               >
-                <div className="relative z-10 space-y-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[9px] font-black text-[var(--primary)] uppercase tracking-widest">{phase.metric}</span>
-                    <div className="w-10 h-10 bg-[var(--bg-primary)] border border-[var(--border)] rounded-xl flex items-center justify-center text-[var(--primary)] group-hover:scale-110 transition-transform">
+                <div className="space-y-2">
+                  <div className="">
+                    <span className="text-base sk-role">{phase.metric}</span>
+                    <div className="hidden">
                       {phase.icon}
                     </div>
                   </div>
-                  <h3 className="text-xl font-black text-[var(--text-heading)] uppercase tracking-tight">{phase.label}</h3>
-                  <p className="text-sm text-[var(--text-primary)] font-light leading-relaxed">{phase.desc}</p>
+                  <h3 className="text-xl font-semibold text-brand-900 break-words">{phase.label}</h3>
+                  <p className="text-base text-black">{phase.desc}</p>
                 </div>
                 
                 {/* Connector Nodes */}
-                <div className="absolute top-1/2 -right-3 w-6 h-6 rounded-full bg-[var(--bg-primary)] border-4 border-white/5 hidden lg:block -translate-y-1/2 z-20 group-last:hidden"></div>
+                <div className="hidden"></div>
               </div>
             ))}
           </div>
@@ -229,37 +229,37 @@ export default function Center() {
       </section>
 
       {/* Support Sub-Systems - Mobile, English, Tuition */}
-      <section className="py-20 lg:py-28 bg-[var(--bg-primary)]">
-        <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            <div className="lg:col-span-5 space-y-10">
-              <div className="space-y-4">
-                <span className="text-[10px] font-black text-[var(--primary)] uppercase tracking-[0.4em]">Service_Extensions</span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[var(--text-heading)] uppercase tracking-tighter leading-[0.9]">Additional <br /> Learning Hubs</h2>
-                <p className="text-base text-[var(--text-secondary)] font-light leading-relaxed max-w-md pt-4">
+      <section className="py-16 lg:py-20 sk-white">
+        <div className="max-w-[1300px] mx-auto px-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            <div className="lg:col-span-5 space-y-6">
+              <div className="space-y-2">
+                <span className="text-lg lg:text-[22px] font-semibold text-black">Service_Extensions</span>
+                <h2 className="text-3xl lg:text-[45px] lg:leading-tight font-bold text-black">Additional <br /> Learning Hubs</h2>
+                <p className="text-[17px] text-black pt-2">
                   We provide specialized support modules beyond university curriculums, including technical training and language proficiency, ensuring the holistic development of every student.
                 </p>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact" className="px-10 py-4 bg-[var(--primary)] rounded-full text-white font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-blue-500/20">
+                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-10 py-3 bg-brand-700 rounded-[10px] text-white text-[15px] font-semibold hover:bg-brand-900 transition-colors text-center">
                   Contact Us
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {auxiliaryServices.map((service, i) => (
                 <Link 
                   key={i} 
                   href={service.href}
-                  className={`p-8 lg:p-10 bg-[var(--surface)]/40 border border-[var(--border)] rounded-[40px] hover:bg-[var(--surface-alt)]/60 transition-all group block ${i === 2 ? 'sm:col-span-2' : ''}`}
+                  className={`sk-card p-6 block ${i === 2 ? 'sm:col-span-2' : ''}`}
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border)] flex items-center justify-center text-[var(--primary)] mb-6 shadow-xl group-hover:scale-110 transition-transform">
+                  <div className="w-[60px] h-[60px] rounded-full bg-brand-700 text-white flex items-center justify-center mb-4">
                     {service.icon}
                   </div>
-                  <h3 className="text-lg lg:text-xl font-black text-[var(--text-heading)] uppercase mb-3 tracking-tight">{service.title}</h3>
-                  <p className="text-sm text-[var(--text-primary)] font-light leading-relaxed">{service.desc}</p>
+                  <h3 className="text-xl font-semibold text-brand-900 mb-2">{service.title}</h3>
+                  <p className="text-base text-black">{service.desc}</p>
                 </Link>
               ))}
             </div>
@@ -267,8 +267,8 @@ export default function Center() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 bg-[var(--bg-primary)] border-t border-[var(--border)]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <section className="py-12 sm:py-16 ">
+        <div className="max-w-[1300px] mx-auto px-5">
           <Newsletter />
         </div>
       </section>
