@@ -23,8 +23,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        // Teal / navy theme
-        brand: { 50: '#E8F5F2', 100: '#D6EEE9', 200: '#C8E8E2', 300: '#8FD0C4', 600: '#14A28B', 700: '#14A28B', 800: '#071F3E', 900: '#071F3E' },
+        // EdBell logo indigo theme
+        brand: { 50: '#F3F2FB', 100: '#E9E7F7', 200: '#DCD9F2', 300: '#A7A1DD', 600: '#1E1286', 700: '#1E1286', 800: '#0E0848', 900: '#0E0848' },
         // Dark Blue AI Color Theme
         background: {
           primary: '#0B1E3C',

@@ -175,7 +175,7 @@ const Footer = () => {
         </div>
 
         {/* Legal Disclaimer / Sub-footer */}
-        <div className="relative left-1/2 -ml-[50vw] w-screen bg-[#071F3E] px-5 py-3 flex flex-col md:flex-row justify-center items-center gap-x-10 text-center">
+        <div className="relative left-1/2 -ml-[50vw] w-screen bg-[#0E0848] px-5 py-3 flex flex-col md:flex-row justify-center items-center gap-x-10 text-center">
           <p className="font-heading text-[15px] font-semibold text-white">
             © {currentYear} EDBELL EDUSOLUTIONS LLP // ALL_RIGHTS_RESERVED
           </p>

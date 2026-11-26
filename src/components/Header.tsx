@@ -68,15 +68,15 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-2.5 left-2.5 right-2.5 z-[100] rounded-[20px] shadow-[0_3px_10px_rgba(0,0,0,0.12)] transition-colors ${isScrolled || isMenuOpen ? 'bg-[#071F3E]' : 'bg-[#515F70]'}`}>
+    <header className={`fixed top-2.5 left-2.5 right-2.5 z-[100] rounded-[20px] shadow-[0_3px_10px_rgba(0,0,0,0.12)] transition-colors ${isScrolled || isMenuOpen ? 'bg-white' : 'bg-white/95'}`}>
       <div className="px-5 lg:px-8 xl:px-14">
         <div className="flex justify-between items-center h-[69px]">
           {/* Logo Cluster */}
           <Link href="/" className="flex items-center shrink-0">
             <img 
-              src="/edbell-logo.jpg?v=1.1" 
-              alt="EdBell Edusolutions" 
-              className="h-[52px] w-[140px] xl:w-[165px] sk-logo"
+              src="/edbell-logo-indigo.png"
+              alt="EdBell Edusolutions"
+              className="h-[58px] w-auto object-contain"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 const fallback = document.getElementById('logo-fallback-header');
@@ -85,8 +85,8 @@ const Header = () => {
             />
             {/* Fallback text - only shown if image fails */}
             <div id="logo-fallback-header" className="hidden items-center space-x-2 ml-1">
-              <span className="text-2xl font-bold text-white">EdBell</span>
-              <span className="hidden sm:block text-sm text-white">edusolutions</span>
+              <span className="text-2xl font-bold text-brand-700">EdBell</span>
+              <span className="hidden sm:block text-sm text-brand-700">edusolutions</span>
             </div>
           </Link>
 
@@ -99,7 +99,7 @@ const Header = () => {
                   key={item.name}
                   href={item.href}
                   className={`relative px-2 xl:px-3 font-heading text-[14px] xl:text-[16px] font-semibold flex items-center transition-colors ${
-                    isActive ? 'text-brand-300' : 'text-white hover:text-brand-300'
+                    isActive ? 'text-brand-700' : 'text-brand-900 hover:text-brand-700'
                   }`}
                 >
                   <span className="lowercase first-letter:uppercase">{item.name}</span>
@@ -125,7 +125,7 @@ const Header = () => {
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="p-2 rounded-full text-white hover:bg-white/10 flex items-center justify-center"
+                  className="p-2 rounded-full text-brand-900 hover:bg-brand-50 flex items-center justify-center"
                 >
                   <LogOut className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </button>
@@ -134,7 +134,7 @@ const Header = () => {
               <div className="hidden sm:flex items-center space-x-2 sm:space-x-4">
                 <Link
                   href="/login"
-                  className="px-2 font-heading text-[14px] xl:text-[16px] font-semibold text-white hover:text-brand-300 flex items-center"
+                  className="px-2 font-heading text-[14px] xl:text-[16px] font-semibold text-brand-900 hover:text-brand-700 flex items-center"
                 >
                   LOGIN
                 </Link>
@@ -153,7 +153,7 @@ const Header = () => {
             {/* Mobile Interface Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2.5 text-white flex items-center justify-center"
+              className="lg:hidden p-2.5 text-brand-900 flex items-center justify-center"
               aria-label="Toggle Menu"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -166,13 +166,13 @@ const Header = () => {
           <div className="fixed -top-2.5 -left-2.5 w-[calc(100vw+10px)] z-[150] h-[100dvh]">
             <div className="absolute inset-0 bg-black/40" onClick={() => setIsMenuOpen(false)}></div>
 
-            <div className="absolute top-0 right-0 w-full max-w-sm h-full bg-[#14A28B] flex flex-col p-6 gap-6 overflow-y-auto">
+            <div className="absolute top-0 right-0 w-full max-w-sm h-full bg-[#1E1286] flex flex-col p-6 gap-6 overflow-y-auto">
               <div className="flex justify-between items-center">
                 <Link href="/" onClick={() => setIsMenuOpen(false)} className="flex items-center">
                   <img 
-                    src="/edbell-logo.jpg?v=1.1" 
-                    alt="EdBell Edusolutions" 
-                    className="h-14 w-36 object-cover rounded bg-white"
+                    src="/edbell-logo-white.png"
+                    alt="EdBell Edusolutions"
+                    className="h-16 w-auto object-contain"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
@@ -189,7 +189,7 @@ const Header = () => {
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="py-3 border-b border-white/30 font-heading text-lg font-semibold text-white hover:bg-[#071F3E] px-2"
+                    className="py-3 border-b border-white/30 font-heading text-lg font-semibold text-white hover:bg-[#0E0848] px-2"
                   >
                     {item.name}
                   </Link>
