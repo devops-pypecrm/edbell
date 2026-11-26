@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Analytics from '@/components/Analytics';
 import PageTransition from '@/components/PageTransition';
+import EnquiryPopup from '@/components/EnquiryPopup';
 
 export default function ConditionalLayout({
   children,
@@ -34,6 +35,7 @@ export default function ConditionalLayout({
         </main>
       </PageTransition>
       <Footer />
+      <EnquiryPopup />
     </>
   );
 }
