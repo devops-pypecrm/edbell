@@ -185,7 +185,7 @@ export default function Services() {
       <section className="relative pb-16 lg:pb-20">
         <div className="hidden">
           <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=70&w=1600"
             alt="Students Collaborating Backdrop"
             className="w-full h-full object-cover"
           />

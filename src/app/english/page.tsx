@@ -40,7 +40,7 @@ export default function SpokenEnglish() {
       <section className="relative">
         <div className="hidden">
           <img 
-            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80" 
+            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=70&w=1600" 
             alt="Spoken English Mastery" 
             className="w-full h-full object-cover"
           />

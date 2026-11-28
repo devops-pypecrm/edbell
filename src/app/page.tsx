@@ -105,7 +105,7 @@ export default function Home() {
     {
       title: 'Global Deployment',
       metric: '2,500+ Syncs',
-      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=75&w=800',
       text: 'Executed 2,500+ international student deployments to Tier-1 global institutions with a 100% synchronization rate in visa protocols.'
     },
     {
@@ -123,7 +123,7 @@ export default function Home() {
         {/* Dynamic Backdrop */}
         <div className="hidden">
           <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=70&w=1600"
             alt="Technology and Innovation Backdrop"
             className="w-full h-full object-cover opacity-35"
             loading="lazy"

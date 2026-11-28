@@ -78,7 +78,7 @@ export default function Contact() {
       <section className="relative">
         <div className="hidden">
           <img
-            src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=70&w=1600"
             alt="University Office Backdrop"
             className="w-full h-full object-cover"
           />

@@ -35,7 +35,7 @@ export default function MobilePhones() {
       <section className="relative">
         <div className="hidden">
           <img 
-            src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80" 
+            src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=70&w=1600" 
             alt="Mobile Technology" 
             className="w-full h-full object-cover"
           />

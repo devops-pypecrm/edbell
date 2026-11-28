@@ -39,7 +39,7 @@ export default function About() {
         {/* Background Images */}
         <div className="hidden">
           <img
-            src="https://images.unsplash.com/photo-1523240715632-99045506af5c?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1523240715632-99045506af5c?auto=format&fit=crop&q=70&w=1600"
             alt="University Students Backdrop"
             className="hidden"
           />
@@ -47,7 +47,7 @@ export default function About() {
         </div>
         <div className="hidden">
           <img
-            src="https://images.unsplash.com/photo-1523050338692-7b835a07973f?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1523050338692-7b835a07973f?auto=format&fit=crop&q=70&w=1600"
             alt="About Backdrop"
             className="hidden"
           />

@@ -9,7 +9,7 @@ export async function GET() {
     if (!conn) {
       return NextResponse.json({ success: true, universities: [], message: 'Database not configured' });
     }
-    const universities = await University.find({}).sort({ createdAt: -1 });
+    const universities = await University.find({}).sort({ createdAt: -1 }).lean();
     return NextResponse.json({ success: true, universities });
   } catch (error) {
     console.error('Error fetching universities:', error);

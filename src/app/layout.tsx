@@ -124,8 +124,9 @@ export default function RootLayout({
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="HandheldFriendly" content="true" />
         <meta name="MobileOptimized" content="width" />
-        <link rel="icon" type="image/jpeg" href="/edbell-logo.jpg?v=1.1" />
-        <link rel="apple-touch-icon" href="/edbell-logo.jpg?v=1.1" />
+        <link rel="icon" href="/favicon.ico?v=2" sizes="48x48" />
+        <link rel="icon" type="image/png" href="/icon-192.png?v=2" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${body.variable} ${heading.variable} ${body.className}`}>

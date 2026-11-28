@@ -146,7 +146,7 @@ export default function Gallery() {
       <section className="relative">
         <div className="hidden">
           <img
-            src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=70&w=1600"
             alt="Graduation Ceremony Backdrop"
             className="w-full h-full object-cover opacity-20"
           />

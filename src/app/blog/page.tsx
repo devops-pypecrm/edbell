@@ -118,7 +118,7 @@ export default function Center() {
       <section className="relative">
         <div className="hidden">
           <img
-            src="https://images.unsplash.com/photo-1524178232457-3bb2449b382a?auto=format&fit=crop&q=80"
+            src="https://images.unsplash.com/photo-1524178232457-3bb2449b382a?auto=format&fit=crop&q=70&w=1600"
             alt="Center Backdrop"
             className="w-full h-full object-cover opacity-20"
           />

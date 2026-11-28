@@ -17,11 +17,16 @@ export function proxy(request: NextRequest) {
     request.headers.get('x-forwarded-for')?.split(',')[0] ||
     'unknown';
   
-  // Rate limiting
+  // Rate limiting: API calls only. Page views and Next.js link prefetches are not
+  // counted, otherwise a single home-page visit (~80 requests) used up the limit
+  // and visitors got "Too Many Requests" on the next page.
   const now = Date.now();
-  const clientData = rateLimit.get(ip);
-  
-  if (clientData) {
+  const isApi = request.nextUrl.pathname.startsWith('/api/');
+  const clientData = isApi ? rateLimit.get(ip) : undefined;
+
+  if (!isApi) {
+    // not rate limited
+  } else if (clientData) {
     if (now < clientData.resetTime) {
       if (clientData.count >= MAX_REQUESTS) {
         return new NextResponse('Too Many Requests', {

@@ -39,7 +39,7 @@ export default function TuitionServices() {
       <section className="relative">
         <div className="hidden">
           <img 
-            src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80" 
+            src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=70&w=1600" 
             alt="Tuition Excellence" 
             className="w-full h-full object-cover"
           />

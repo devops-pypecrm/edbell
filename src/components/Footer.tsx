@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Heart, Loader2, CheckCircle, ArrowRight, Zap, Globe, Sparkles } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram, Heart, Loader2, CheckCircle, ArrowRight, Zap, Globe, Sparkles } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -42,10 +42,8 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: 'FB', icon: Facebook, href: '#' },
-    { name: 'IG', icon: Instagram, href: '#' },
-    { name: 'TW', icon: Twitter, href: '#' },
-    { name: 'LN', icon: Linkedin, href: '#' },
+    { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/p/EdBell-edusolutions-61571668259241/' },
+    { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/edbelledusolutions/' },
   ];
 
   return (
@@ -161,7 +159,7 @@ const Footer = () => {
             <div className="flex items-center justify-between gap-6">
               <div className="flex gap-1 -ml-3">
                 {socialLinks.map(s => (
-                  <Link key={s.name} href={s.href} className="w-11 h-11 rounded-full flex items-center justify-center text-brand-700 hover:text-white hover:bg-brand-700">
+                  <Link key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`EdBell on ${s.name}`} className="w-11 h-11 rounded-full flex items-center justify-center text-brand-700 hover:text-white hover:bg-brand-700">
                     <s.icon className="h-5 w-5" />
                   </Link>
                 ))}
